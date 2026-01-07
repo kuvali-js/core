@@ -31,6 +31,7 @@ yarn-error.*
 *.pem
 
 # local env files
+.env
 .env*.local
 
 # typescript
@@ -41,3 +42,19 @@ app-example
 # generated native folders
 /ios
 /android
+
+# Database & Storage
+*.db
+*.db-journal
+*.sqlite
+/core/databases/watermelon/storage/
+
+
+# dev specific
+*-WEG
+*-ORI
+WEG-*
+ORI-*
+WEG-**
+ORI-**
+* copy.*

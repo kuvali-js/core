@@ -1,0 +1,2 @@
+#!/opt/homebrew/bin/fish
+docker logs supabase_auth_white_dog_supa

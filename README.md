@@ -1,50 +1,28 @@
-# Welcome to your Expo app 👋
+# @kuvali-js/ui
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+<p align="left">
+  <a href="https://www.npmjs.com/package/@kuvali-js/ui">
+    <img src="https://img.shields.io/npm/v/@kuvali-js/ui.svg?style=flat-square" alt="npm version">
+  </a>
+  <a href="https://github.com/kuvali-js/core/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/kuvali-js/ui?style=flat-square" alt="license">
+  </a>
+  <img src="https://img.shields.io/badge/status-alpha-orange?style=flat-square" alt="status alpha">
+</p>
 
-## Get started
+> **The solid foundation for feature-complete, offline-first React Native mobile apps.**
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+⚠️ **Note: This project is currently in ALPHA.** The API is subject to change. We are working towards a stable foundation. Not recommended for production use yet, but we welcome early adopters and feedback!
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🚀 Vision
+Kuvali-js aims to eliminate the boilerplate of mobile development. Instead of wiring up authentication, storage, and navigation from scratch every time, Kuvali provides a **feature-complete core** that works offline-first by default.
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## ✨ Core Features (Roadmap)
+- [ ] **Identity Service:** Standardized Auth-Flow with session persistence.
+- [ ] **Offline-First Storage:** Automatic data synchronization and local caching.
+- [ ] **Modular Architecture:** Plug-and-play services for rapid development.
+- [ ] **React Native Optimized:** Deep integration with the Expo & React Native ecosystem.

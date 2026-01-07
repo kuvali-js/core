@@ -1,15 +1,16 @@
 {
   "expo": {
-    "name": "whitedog",
+    "name": "WhiteDog",
     "slug": "whitedog",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "whitedog",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.whitedog"
     },
     "android": {
       "adaptiveIcon": {
@@ -19,7 +20,8 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.kuvali.whitedog"
     },
     "web": {
       "output": "static",
@@ -27,16 +29,31 @@
     },
     "plugins": [
       "expo-router",
+      "expo-dev-client",
+      "expo-secure-store",
       [
-        "expo-splash-screen",
+        "expo-build-properties",
         {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff",
-          "dark": {
-            "backgroundColor": "#000000"
+          "ios": {
+            "deploymentTarget": "15.1",
+            "extraPods": [
+              {
+                "name": "simdjson",
+                "path": "../node_modules/@nozbe/simdjson",
+                "modular_headers": true
+              }
+            ]
+          },
+          "android": {
+            "minSdkVersion": 24
           }
+        }
+      ],[
+        "@sentry/react-native/expo",
+        {
+          "organization": "WhiteDogLLC",
+          "project": "WhiteDogApp",
+          "uploadSourceMaps": false
         }
       ]
     ],

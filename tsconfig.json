@@ -1,4 +1,5 @@
 {
+  "//":"/tsconfig.json",
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
@@ -7,10 +8,7 @@
     "emitDecoratorMetadata": true,
     "strictPropertyInitialization": false,
     "paths": {
-      "@kuvali/core/*": ["./core/*"],
       "@kuvali/core": ["./core/index.ts"],
-      "@kuvali/translations/*": ["./core/i18n/translations/*"],
-      "@kuvali/core-ui": ["./core/core-ui/index.ts"],
       "@services/*": ["./services/*"],
       "@/*": ["./*"]
     }

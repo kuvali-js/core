@@ -19,9 +19,11 @@
 ---
 
 ## 🚀 Vision
+
 Kuvali-js aims to eliminate the boilerplate of mobile development. Instead of wiring up authentication, storage, and navigation from scratch every time, Kuvali provides a **feature-complete core** that works offline-first by default.
 
 ## ✨ Core Features (Roadmap)
+
 - [ ] **Identity Service:** Standardized Auth-Flow with session persistence.
 - [ ] **Offline-First Storage:** Automatic data synchronization and local caching.
 - [ ] **Modular Architecture:** Plug-and-play services for rapid development.

@@ -1,5 +1,5 @@
 {
-  "//":"/tsconfig.json",
+  "//": "/tsconfig.json",
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
@@ -7,16 +7,24 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "strictPropertyInitialization": false,
+    "baseUrl": ".",
     "paths": {
-      "@kuvali/core": ["./core/index.ts"],
-      "@services/*": ["./services/*"],
-      "@/*": ["./*"]
+      "@kuvali-js/core": ["./core/index.ts"],
+      "@services/*": ["./src/services/*"],
+      "@config/*": ["./src/config/*"],
+      "@/*": ["./src/*"],
+      "#/*": ["./*"]
     }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-, "App.tsx"  ]
+    "expo-env.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "core/**/*.ts",
+    "core/**/*.tsx",
+    "eslint.config.js"
+  ]
 }

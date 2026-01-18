@@ -1,16 +1,21 @@
-// @kuvali/core/i18n/index.ts
+// @kuvali-js/core/i18n/index.ts
 
 //---------------------------------------
 // Export the Hook for the UI
-export { useI18n } from './TranslationContext';
+export { useI18n } from "./TranslationContext";
 
 //---------------------------------------
 // Export the Service for the app to call i18n.init()
-export { i18n } from './I18nService';
-export { TranslationProvider } from './TranslationContext';
+export { i18n } from "./I18nService";
+export { TranslationProvider } from "./TranslationContext";
 
 //---------------------------------------
 // Export Types
-export type { I18nConfig } from './I18nService';
+export type { I18nConfig } from "./I18nService";
+
+//---------------------------------------
+// needed in translation files
+export { defineTranslation } from "./lib/defineTranslation";
+export type { Translation } from "./lib/i18n";
 
 //### END #####################################################################

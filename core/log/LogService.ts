@@ -18,36 +18,41 @@
  * Implements a buffer of log messages until init of database
  *****************************************************************************/
 
-import { Platform } from 'react-native';
-import { version as appVersion } from '@/package.json';
-import Constants from 'expo-constants';
-import React from 'react';
+import { Platform } from "react-native";
+import { version as appVersion } from "#/package.json";
+import Constants from "expo-constants";
+import React from "react";
 
-
-import originalLog from 'loglevel';
+import originalLog from "loglevel";
 
 // --- database type & tables
-import KuvaliLog from '../databases/watermelon/models/KuvaliLog';
-import { type Database } from '@nozbe/watermelondb';
+import KuvaliLog from "../databases/watermelon/models/KuvaliLog";
+import { type Database } from "@nozbe/watermelondb";
 
 // -- error management
-import * as Sentry from '@sentry/react-native';
-
+import * as Sentry from "@sentry/react-native";
 
 //#############################################################################
 //### LOGGING
 //#############################################################################
 
 // Log-Level as array
-export const LOG_LEVEL_NAMES = [ 'TRACE', 'DEBUG', 'INFO', 'WARN', 'ERROR', 'SILENT' ] as const;
+export const LOG_LEVEL_NAMES = [
+  "TRACE",
+  "DEBUG",
+  "INFO",
+  "WARN",
+  "ERROR",
+  "SILENT",
+] as const;
 // get Log-Level as string
-export type LogLevelName = typeof LOG_LEVEL_NAMES[number];
+export type LogLevelName = (typeof LOG_LEVEL_NAMES)[number];
 
 // Interface to extend loglevel type.
 interface LogExtensions {
   getLevelName: (level: number) => LogLevelName;
   logLevelName: () => LogLevelName;
-  logLevel:     () => number;
+  logLevel: () => number;
   devFatal(message: string, context?: string): void;
   LOG_LEVEL_NAMES: typeof LOG_LEVEL_NAMES;
 }
@@ -70,20 +75,19 @@ class LogService {
   private isInitialized = false;
 
   // set default values to prevent null value in the db and Sentry
-  private static readonly LOG_CONTEXT = 'LOG-SERVICE' // Context for the @Log decorator
-  private sessionId: string = `gen-${Date.now()}`     // persistence between every call to log
-  private userId:    string = 'anonymous';            // is set after IdentityService is initialised (eventually after init of LogService)
-  private userRole:  string = 'role';                 // is set after IdentityService is initialised (eventually after init of LogService)
-  private isDbReady         = false;                  // database/watermelon status
-  private isFlushing        = false;                  // flusching buffer into database after its init
-  private logBuffer: LogEntry[] = [];                 // buffer of log messages prior to DB init
-  private watermelon: Database | null = null;         // watermelon db instance for logging
+  private static readonly LOG_CONTEXT = "LOG-SERVICE"; // Context for the @Log decorator
+  private sessionId: string = `gen-${Date.now()}`; // persistence between every call to log
+  private userId: string = "anonymous"; // is set after IdentityService is initialised (eventually after init of LogService)
+  private userRole: string = "role"; // is set after IdentityService is initialised (eventually after init of LogService)
+  private isDbReady = false; // database/watermelon status
+  private isFlushing = false; // flusching buffer into database after its init
+  private logBuffer: LogEntry[] = []; // buffer of log messages prior to DB init
+  private watermelon: Database | null = null; // watermelon db instance for logging
 
   constructor() {
-    this.sessionId = Constants.sessionId || `id-${Date.now()}`
-    this.setupFactory()   // create the plugin for LogLevel
+    this.sessionId = Constants.sessionId || `id-${Date.now()}`;
+    this.setupFactory(); // create the plugin for LogLevel
   }
-
 
   //***************************************************************************
   /** ### Initialise the session
@@ -91,8 +95,8 @@ class LogService {
    * - session,
    * - userid, role and
    * - device and app data
-  ****************************************************************************/
-  public async  init() {
+   ****************************************************************************/
+  public async init() {
     if (this.isInitialized) return;
 
     //-----------------------------------
@@ -111,33 +115,33 @@ class LogService {
         }),
         expo: Constants.expoConfig?.version,
         react: React.version,
-        rn: `${Platform.constants?.reactNativeVersion?.major}.${Platform.constants?.reactNativeVersion?.minor}`
+        rn: `${Platform.constants?.reactNativeVersion?.major}.${Platform.constants?.reactNativeVersion?.minor}`,
       },
       device: {
         os: Platform.OS,
         osVersion: Platform.Version,
         model: Constants.deviceName,
-      }
+      },
     };
 
     //-----------------------------------
     // Write common "Header"-metadata at start of session
-    await this.persistToDatabase('SYSTEM', 'Session Start', { sessionHeader });
+    await this.persistToDatabase("SYSTEM", "Session Start", { sessionHeader });
 
     //-----------------------------------
     // set static data as tags in Sentry
     Sentry.setTags({
-      sessionId:    String(this.sessionId),
-      os:           String(sessionHeader.device.os),
-      role:         String(""),
-      appVersion:   String(sessionHeader.version.app),
+      sessionId: String(this.sessionId),
+      os: String(sessionHeader.device.os),
+      role: String(""),
+      appVersion: String(sessionHeader.version.app),
       buildVersion: Platform.select({
-        ios:      String(Constants.expoConfig?.ios?.buildNumber),
-        android:  String(Constants.expoConfig?.android?.versionCode?.toString()),
+        ios: String(Constants.expoConfig?.ios?.buildNumber),
+        android: String(Constants.expoConfig?.android?.versionCode?.toString()),
       }),
-      deviceOs:         String(Platform.OS),
-      deviceOsVersion:  String(Platform.Version),
-      deviceModel:      String(Constants.deviceName ?? 'unknown'),
+      deviceOs: String(Platform.OS),
+      deviceOsVersion: String(Platform.Version),
+      deviceModel: String(Constants.deviceName ?? "unknown"),
     });
 
     this.isInitialized = true;
@@ -159,7 +163,7 @@ class LogService {
 
       // --- create standard meta data record ---
       return async (message, ...args) => {
-        const context = loggerName ? String(loggerName) : 'GLOBAL';
+        const context = loggerName ? String(loggerName) : "GLOBAL";
         const levelUpper = methodName.toUpperCase();
 
         // Standardize metadata
@@ -171,22 +175,24 @@ class LogService {
         };
 
         // --- log errors to Bugsink ----
-        if (levelUpper === 'ERROR') {
+        if (levelUpper === "ERROR") {
           // Immediate remote report for errors
-          const errorObject = message instanceof Error ? message : new Error(String(message));
+          const errorObject =
+            message instanceof Error ? message : new Error(String(message));
           Sentry.captureException(errorObject, { extra: metadata });
-          console.debug('Error logging to bugsink done.', message);
+          console.debug("Error logging to bugsink done.", message);
         }
-        if (levelUpper !== 'ERROR' && levelUpper !== 'TRACE') { // prevent log overflow due to TRACE
+        if (levelUpper !== "ERROR" && levelUpper !== "TRACE") {
+          // prevent log overflow due to TRACE
           // --- put non-errors into BugSink/Sentry breadcrumns ---
           // Local buffer for non-errors
           Sentry.addBreadcrumb({
-            category: 'log',
+            category: "log",
             level: methodName as Sentry.SeverityLevel,
             message: String(message),
             data: metadata,
           });
-          console.debug('Non-Error logging to bugsink done:', message);
+          console.debug("Non-Error logging to bugsink done:", message);
         }
 
         // --- log every message in WatermelonDB for offline-first persistence
@@ -203,35 +209,35 @@ class LogService {
 
   /********************************************************
    * ### Batch write log messages to local database
-  *******************************************************/
+   *******************************************************/
   private async writeBatchToDb(entries: LogEntry[]) {
-
     if (!this.watermelon) {
-      console.warn('[Kuvali:LogService] writeBatchToDb called without database instance.')
+      console.warn(
+        "[Kuvali:LogService] writeBatchToDb called without database instance.",
+      );
       return;
     }
 
-
     try {
       await this.watermelon.write(async () => {
-        const logCollection = this.watermelon!.get<KuvaliLog>('kuvali_logs')
-        const models = entries.map(item =>
+        const logCollection = this.watermelon!.get<KuvaliLog>("kuvali_logs");
+        const models = entries.map((item) =>
           logCollection.prepareCreate((record) => {
             record.schemaVersion = item.metadata.schemaVersion;
-            record.session_id    = this.sessionId!;
-            record.level         = item.level;
-            record.context       = item.metadata.context ?? 'GLOBAL';
-            record.message       = item.message;
-            record.payload       = JSON.stringify(item.metadata);
-            record.created_at    = Date.now();
-          })
+            record.session_id = this.sessionId!;
+            record.level = item.level;
+            record.context = item.metadata.context ?? "GLOBAL";
+            record.message = item.message;
+            record.payload = JSON.stringify(item.metadata);
+            record.created_at = Date.now();
+          }),
         );
-        await this.watermelon!.batch(...models)
+        await this.watermelon!.batch(...models);
       });
-      console.debug('[Kuvali:LogService] Logging to local database done.')
+      console.debug("[Kuvali:LogService] Logging to local database done.");
     } catch (err) {
       // use console.error as fallback
-      console.error('[Kuvali:LogService] Batch write failed:', err);
+      console.error("[Kuvali:LogService] Batch write failed:", err);
     }
   }
 
@@ -243,14 +249,19 @@ class LogService {
    * Logs into buffer until database is initialized in the core.
    * Flushes all entries to db and clears buffer.
    *******************************************************/
-  private async persistToDatabase(level: string, message: string, metadata: any) {
+  private async persistToDatabase(
+    level:    string,
+    message:  string,
+    metadata: any,
+  ) {
     if (!this.isDbReady || this.isFlushing) {
       this.logBuffer.push({ level, message, metadata });
-      console.debug('Logging into buffer until init of database/end of flushing.');
+      console.debug(
+        "Logging into buffer until init of database/end of flushing.",
+      );
       return;
     }
     await this.writeBatchToDb([{ level, message, metadata }]);
-
   }
 
   /********************************************************
@@ -261,16 +272,16 @@ class LogService {
    * ---
    * Temporal order of messages is kept intact this way and
    * no messages are written twice or are missing.
-  *******************************************************/
- private async flushBuffer() {
-   if (this.logBuffer.length === 0 || this.isFlushing) return;
-   this.isFlushing = true;
+   *******************************************************/
+  private async flushBuffer() {
+    if (this.logBuffer.length === 0 || this.isFlushing) return;
+    this.isFlushing = true;
 
-   try {
-     while (this.logBuffer.length > 0) {
-       const snapshot = [...this.logBuffer];
-       this.logBuffer = [];
-       await this.writeBatchToDb(snapshot);
+    try {
+      while (this.logBuffer.length > 0) {
+        const snapshot = [...this.logBuffer];
+        this.logBuffer = [];
+        await this.writeBatchToDb(snapshot);
       }
     } finally {
       this.isFlushing = false;
@@ -282,12 +293,16 @@ class LogService {
    *******************************************************/
   public setDatabase(dbInstance: any) {
     if (!dbInstance) {
-      this.devFatal("LogService: Received null database instance!", "DB Init Error", "INIT");
+      this.devFatal(
+        "LogService: Received null database instance!",
+        "DB Init Error",
+        "INIT",
+      );
       return;
     }
     this.watermelon = dbInstance;
     this.isDbReady = true;
-    console.debug('LogService: Database connected. Flushing buffer...');
+    console.debug("LogService: Database connected. Flushing buffer...");
     this.flushBuffer();
   }
 
@@ -295,14 +310,14 @@ class LogService {
    * ### Get userId after init of IdentityServcie
    * Sets also the user role.
    **********************************************************/
-  public setUserId(userId: string = 'anonymous', role: string = 'role') {
-    this.userId   = userId;
+  public setUserId(userId: string = "anonymous", role: string = "role") {
+    this.userId = userId;
     this.userRole = role;
 
     if (userId) {
       Sentry.setUser({
         id:   userId,
-        role: role
+        role: role,
       });
 
       Sentry.setTag("user_role", role);
@@ -322,13 +337,16 @@ class LogService {
    * - dev:  fail with an error
    * - prod: log a warning and continue
    *****************************************************************************/
-  public devFatal(devMessage: string, prodMessage: string, context?: string): void {
-
+  public devFatal(
+    devMessage: string,
+    prodMessage: string,
+    context?: string,
+  ): void {
     if (__DEV__) {
-      const fullMessage = `[Kuvali DX] ${context ? `${context}: ` : ''}${devMessage}`;
+      const fullMessage = `[Kuvali DX] ${context ? `${context}: ` : ""}${devMessage}`;
       throw new Error(fullMessage);
     } else {
-      const fullMessage = `[Kuvali] ${context ? `${context}: ` : ''}${prodMessage}`;
+      const fullMessage = `[Kuvali] ${context ? `${context}: ` : ""}${prodMessage}`;
       this.warn(fullMessage);
     }
   }
@@ -342,16 +360,14 @@ class LogService {
   public warn  = (msg: any, ...args: any[]) => originalLog.warn(msg, ...args);
   public error = (msg: any, ...args: any[]) => originalLog.error(msg, ...args);
 
-
   public setLevel   = (level: originalLog.LogLevelDesc) => originalLog.setLevel(level);
-  public getLevel   = ()                                => originalLog.getLevel();
-  public getLogger  = (name: string)                    => originalLog.getLogger(name);
-  public getLoggers = ()                                => originalLog.getLoggers();
-
+  public getLevel   = () => originalLog.getLevel();
+  public getLogger  = (name: string) => originalLog.getLogger(name);
+  public getLoggers = () => originalLog.getLoggers();
 } // class LogService
 
 // Export as Singleton
-const log = new LogService()
-export default log
+const log = new LogService();
+export default log;
 
 //### END #####################################################################

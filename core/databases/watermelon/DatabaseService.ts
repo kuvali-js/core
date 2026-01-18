@@ -1,27 +1,32 @@
-// @Kuvali/core/databases/watermelon/DatabaseService.ts
-import { appSchema, Database } from '@nozbe/watermelondb';
-import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite';
+// @kuvali-js/core/databases/watermelon/DatabaseService.ts
+import { appSchema, Database } from "@nozbe/watermelondb";
+import SQLiteAdapter from "@nozbe/watermelondb/adapters/sqlite";
+import { log, Log } from "../../log/index";
 
-import { log, Log } from '../../log/index'
+/**********************************************************
+ * ### WATERMELON DatabaseService
+ * creates
+ * - DatabaseService class
+ * - db instance access through proxy function
+ *********************************************************/
 
 /**********************************************************
  * ### Watermelon Database Definition
-* Merges core schemas/models with those provided by the application.
-* **********************************************************/
-import { coreSchemas } from './schema';
-import { coreModels  } from './models/index';
-
+ * Merges core schemas/models with those provided by the application.
+ * **********************************************************/
+import { coreSchemas } from "./schema";
+import { coreModels } from "./models/index";
 
 export interface DatabaseConfig {
-  dbName:     string;
-  appModels:  any[] //Model[];
-  appSchemas: any[] //TableSchema[];
-  version:    number;
+  dbName: string;
+  appModels: any[]; //Model[];
+  appSchemas: any[]; //TableSchema[];
+  version: number;
 }
 
 class DatabaseService {
-  private static readonly CONTEXT = "DatabaseService:Watermelon"
-  private _database: Database | null = null
+  private static readonly CONTEXT = "DatabaseService:Watermelon";
+  private _database: Database | null = null;
 
   /**********************************************************
    * ### Return database instance
@@ -32,47 +37,42 @@ class DatabaseService {
       log.devFatal(
         `${DatabaseService.CONTEXT}: Access to instance before init()!`,
         `${DatabaseService.CONTEXT}: Access to instance before init()!`,
-        "INIT"
-      )
+        "INIT",
+      );
       //TODO// Close app gracefully with error message to user
     }
-    return this._database!
+    return this._database!;
   }
-
 
   /**********************************************************
    * ### Init Watermelon database
    *********************************************************/
   public init(config: DatabaseConfig): Database | null {
     if (this._database) {
-      log.warn(`${DatabaseService.CONTEXT}: Watermelon already initialized.`)
-      return this._database
+      log.warn(`${DatabaseService.CONTEXT}: Watermelon already initialized.`);
+      return this._database;
     }
 
     try {
       const finalSchema = appSchema({
         version: config.version, // Increment version for schema changes
-        tables: [
-          ...coreSchemas,
-          ...config.appSchemas
-        ]
-      })
+        tables: [...coreSchemas, ...config.appSchemas],
+      });
 
       const adapter = new SQLiteAdapter({
-        dbName: config.dbName,    // name of SQLite file on device
+        dbName: config.dbName, // name of SQLite file on device
         schema: finalSchema,
         jsi: true,
       });
 
       this._database = new Database({
         adapter,
-        modelClasses: [
-          ...coreModels,
-          ...config.appModels
-        ]
+        modelClasses: [...coreModels, ...config.appModels],
       });
 
-      log.info(`${DatabaseService.CONTEXT}: Watermelon db "${config.dbName}" started`);
+      log.info(
+        `${DatabaseService.CONTEXT}: Watermelon db "${config.dbName}" started`,
+      );
       return this._database;
     } catch (error) {
       log.error(`${DatabaseService.CONTEXT}: Initialization failed`, error);
@@ -91,7 +91,22 @@ class DatabaseService {
   }
 }
 
+// Internal singleton instance of the service
+const service = new DatabaseService();
+export const databaseService = service; // Export the manager for core-level configuration (e.g., in initCore)
 
-export const db = new DatabaseService();
+/**********************************************************
+ * PROXY EXPORT: 'db'
+ * This allows the app to use 'db.get()' directly.
+ * The proxy redirects all calls to the active Watermelon instance.
+ ********************************************************/
+export const db = new Proxy({} as Database, {
+  get(_, prop) {
+    const target = service.instance as any;
+    const value = target[prop];
+    // Ensure methods remain bound to the database instance
+    return typeof value === "function" ? value.bind(target) : value;
+  },
+});
 
 //### END #################################################

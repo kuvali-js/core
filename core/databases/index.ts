@@ -1,5 +1,5 @@
-// @Kuvali/core/databases/index.ts
+// @kuvali-js/core/databases/index.ts
 
-export { db } from './watermelon/DatabaseService'
+export { db, databaseService } from "./watermelon/DatabaseService";
 
 //### END #####################################################################

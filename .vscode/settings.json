@@ -1,7 +1,11 @@
+// .vscode/settings.json
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
-    "source.organizeImports": "explicit",
-    "source.sortMembers": "explicit"
-  }
+    "source.fixAll.eslint":   "explicit", // Nur ESLint darf fixen
+    "source.organizeImports": "never",    // Oft die Ursache für Zeilenverschiebungen
+    "source.sortMembers":     "explicit"
+  },
+  "editor.formatOnSave":      false,  // Verhindert, dass Prettier/Standard-Formatter eingreifen
+  "javascript.format.enable": false,  // Deaktiviert den internen VS Code Formatter
+  "typescript.format.enable": false   // Deaktiviert den internen VS Code Formatter
 }

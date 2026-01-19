@@ -1,5 +1,5 @@
 // core/log/LogDecorator.ts
-import logService from './LogService';
+import { log }  from './LogService';
 
 //#############################################################################
 //### DECORATOR
@@ -20,7 +20,7 @@ export function Log(customName?: string) {
       //---------------------------------
       let className = customName || this?.constructor?.name || this?.name || 'GLOBAL';
       className = className.toUpperCase()
-      const logger = logService.getLogger(className);
+      const logger = log.getLogger(className);
       logger.debug(`[${className}:${methodName}] called:`, args);
 
       //---------------------------------
@@ -29,7 +29,7 @@ export function Log(customName?: string) {
         const type = isAsync ? 'async ' : '';
         logger.error(`❌ [${className}:${methodName}] ${type}failed:`, err);
 
-        logService.devFatal(
+        log.devFatal(
           `${type.toUpperCase()} error in ${methodName}: ${err?.message || err}`,
           `Graceful recovery from ${type}error in ${methodName}`,
           className

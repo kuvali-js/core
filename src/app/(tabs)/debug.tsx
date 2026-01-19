@@ -6,9 +6,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import ConnectionCheck from "../../components/checks/ConnectionCheck";
-import LogLevelCheck from "../../components/checks/LogLevelCheck";
-import log from "../../services/IdentityService";
+// import ConnectionCheck from "@components/checks/ConnectionCheck";
+import LogLevelCheck from "@/components/checks/LogLevelCheck";
 import { DebugTableInspector } from "@/components/checks/DebugTableInspector";
 
 export default function DebugScreen() {
@@ -21,7 +20,7 @@ export default function DebugScreen() {
       <Text style={styles.title}>Developer Debug Menu</Text>
 
       <View style={styles.section}>
-        <ConnectionCheck />
+        {/* <ConnectionCheck /> */}
         <LogLevelCheck />
       </View>
 

@@ -1,30 +1,30 @@
-// lib/debugUtils.ts
-import { database } from '../core/databases/watermelon/DatabaseService';
+// 'src/components/checks/debugTableToConsole.ts
+import { db } from '@kuvali-js/core';
 
 /**
  * Returns all table names defined in the current schema.
  */
 export const getDatabaseTableNames = (): string[] => {
-  return Object.keys(database.adapter.schema.tables);
+  return Object.keys(db.adapter.schema.tables);
 };
 
-/**
+/*
  * Fetches data from a WatermelonDB table and prints it to the console.
  */
 export const debugTableToConsole = async (tableName: string) => {
   try {
-    const records = await database.get(tableName).query().fetch();
+    const records = await db.get(tableName).query().fetch();
 
     if (records.length === 0) {
-      console.log(`========================================`);
-      console.log(`DATABASE: ${tableName} is EMPTY`);
-      console.log(`========================================\n`);
+      console.debug(`========================================`);
+      console.debug(`DATABASE: ${tableName} is EMPTY`);
+      console.debug(`========================================\n`);
       return;
     }
 
-    console.log(`========================================`);
-    console.log(`TABLE: ${tableName} (${records.length} Records)`);
-    console.log(`========================================`);
+    console.debug(`========================================`);
+    console.debug(`TABLE: ${tableName} (${records.length} Records)`);
+    console.debug(`========================================`);
 
     records.forEach((record: any, index: number) => {
       const raw = record._raw;
@@ -37,19 +37,19 @@ export const debugTableToConsole = async (tableName: string) => {
 
         // Handle JSON/Objects in fields like 'payload'
         if (typeof value === 'string' && (value.startsWith('{') || value.startsWith('['))) {
-          console.log(`${key}:`, '[JSON Object]')
+          console.trace(`${key}:`, '[JSON Object]')
         } else if (typeof value === 'object' && value !== null) {
-          console.log(`${key}:`, '[Object]')
+          console.trace(`${key}:`, '[Object]')
         } else if (key === 'created_at' || key === 'updated_at') {
-          console.log(`${key}: ${new Date(value).toLocaleString()}`);
+          console.trace(`${key}: ${new Date(value).toLocaleString()}`);
         } else {
-          console.log(`${key}: ${value}`);
+          console.trace(`${key}: ${value}`);
         }
       });
-      console.log(`----------------------------------------`);
+      console.trace(`----------------------------------------`);
     });
 
-    console.log(`=== END OF TABLE: ${tableName} ===\n`);
+    console.trace(`=== END OF TABLE: ${tableName} ===\n`);
   } catch (e: any) {
     console.error(`Manual Fetch Error:`, e.message);
   }

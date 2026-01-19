@@ -45,14 +45,15 @@ export const LOG_LEVEL_NAMES = [
   "ERROR",
   "SILENT",
 ] as const;
-// get Log-Level as string
-export type LogLevelName = (typeof LOG_LEVEL_NAMES)[number];
+
+// get level as string
+type LogLevelName = (typeof LOG_LEVEL_NAMES)[number];
 
 // Interface to extend loglevel type.
 interface LogExtensions {
-  getLevelName: (level: number) => LogLevelName;
-  logLevelName: () => LogLevelName;
-  logLevel: () => number;
+  getLevelName:    (level: number) => LogLevelName;
+  logLevelName:    ()              => LogLevelName;
+  logLevel:        ()              => number;
   devFatal(message: string, context?: string): void;
   LOG_LEVEL_NAMES: typeof LOG_LEVEL_NAMES;
 }
@@ -75,14 +76,14 @@ class LogService {
   private isInitialized = false;
 
   // set default values to prevent null value in the db and Sentry
-  private static readonly LOG_CONTEXT = "LOG-SERVICE"; // Context for the @Log decorator
-  private sessionId: string = `gen-${Date.now()}`; // persistence between every call to log
-  private userId: string = "anonymous"; // is set after IdentityService is initialised (eventually after init of LogService)
-  private userRole: string = "role"; // is set after IdentityService is initialised (eventually after init of LogService)
-  private isDbReady = false; // database/watermelon status
-  private isFlushing = false; // flusching buffer into database after its init
-  private logBuffer: LogEntry[] = []; // buffer of log messages prior to DB init
-  private watermelon: Database | null = null; // watermelon db instance for logging
+  private static readonly LOG_CONTEXT = "LOG-SERVICE";        // Context for the @Log decorator
+  private sessionId:  string          = `gen-${Date.now()}`;  // persistence between every call to log
+  private userId:     string          = "anonymous";          // is set after IdentityService is initialised (eventually after init of LogService)
+  private userRole:   string          = "role";               // is set after IdentityService is initialised (eventually after init of LogService)
+  private isDbReady:  boolean         = false;                // database/watermelon status
+  private isFlushing: boolean         = false;                // flusching buffer into database after its init
+  private logBuffer:  LogEntry[]      = [];                   // buffer of log messages prior to DB init
+  private watermelon: Database | null = null;                 // watermelon db instance for logging
 
   constructor() {
     this.sessionId = Constants.sessionId || `id-${Date.now()}`;
@@ -351,6 +352,11 @@ class LogService {
     }
   }
 
+  public logLevelName(logLevel: number = -1) {
+    if (logLevel === -1) logLevel = this.getLevel()
+    return LOG_LEVEL_NAMES[logLevel]
+  }
+  
   /** * Method mapping using arrow functions to preserve lexical 'this' context.
    * This allows direct deconstruction: const { debug } = LogService;
    */
@@ -367,7 +373,6 @@ class LogService {
 } // class LogService
 
 // Export as Singleton
-const log = new LogService();
-export default log;
+export const log = new LogService();
 
 //### END #####################################################################

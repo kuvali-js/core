@@ -118,6 +118,7 @@ class I18nService {
   }
 }
 
+// Export as Singleton
 export const i18n = new I18nService();
 
 //### END #####################################################################

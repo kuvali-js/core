@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 import { db } from "@kuvali-js/core";
-import { debugTableToConsole } from "#/lib/debugTableToConsole";
+import { debugTableToConsole } from "@/components/checks/debugTableToConsole";
 
 export function DebugTableInspector() {
   // Check if database is ready to avoid early crashes

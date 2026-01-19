@@ -7,14 +7,14 @@
 
 //---------------------------------------
 import NetInfo, { NetInfoState } from "@react-native-community/netinfo";
-import { atom, createStore } from "jotai";
+import { atom, createStore, useAtomValue } from "jotai";
 import { EventEmitter } from "events";
 import TypedEmitter from "typed-emitter";
 
 //---------------------------------------
 // --- core
 import { coreEndpoints } from "./coreEndpoints";
-import log from "../log/LogService";
+import { log }  from "../log/LogService";
 
 //---------------------------------------
 export type ConnectionType = 
@@ -246,5 +246,11 @@ export const ConnectivityService = {
 
 };
 
+/**********************************************************
+ * ### Return the hook to access ConnectivityService 
+ *********************************************************/
+export function useConnectivity() {
+  return useAtomValue(connectivityAtom);
+}
 
 //### END #################################################

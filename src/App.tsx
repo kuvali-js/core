@@ -49,7 +49,7 @@ const ctx = require.context("./app");
 if (process.env.EXPO_PUBLIC_BUGSINK_KEY) {
   Sentry.init({
     dsn: process.env.EXPO_PUBLIC_BUGSINK_KEY,
-    debug: __DEV__,
+    debug: false,
   });
 }
 

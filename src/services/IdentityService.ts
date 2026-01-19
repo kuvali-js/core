@@ -61,4 +61,5 @@ class IdentityService {
   }
 }
 
-export default new IdentityService();
+export const identityService =  new IdentityService();
+

@@ -5,7 +5,7 @@ import { LogLevelDesc } from "loglevel";
 /**********************************************************
  * ### Init Core
  **********************************************************/
-import log                from "./log/LogService";
+import { log }            from "./log/LogService";
 import { 
   ConnectivityService, 
   type Endpoint         } from "./connectivity/ConnectivityService";

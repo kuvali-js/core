@@ -1,7 +1,10 @@
+// 'src/components/checks/LogLevelCheck.tsx'
+
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
-import log, { type LogLevelName } from '../../services/IdentityService';
+
+import { log, type LogLevelName, LOG_LEVEL_NAMES } from '@kuvali-js/core';
 
 export default function LogLevelCheck() {
   const [currentLevel, setCurrentLevel] = useState<LogLevelName | ''>('');
@@ -9,7 +12,7 @@ export default function LogLevelCheck() {
   const [lastLog, setLastLog] = useState<string>('No tests run yet');
 
   // Format data for the dropdown
-  const data = log.LOG_LEVEL_NAMES.map((name) => ({
+  const data = LOG_LEVEL_NAMES.map((name) => ({
     label: name,
     value: name,
   }));

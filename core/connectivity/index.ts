@@ -1,5 +1,12 @@
 // '@kuvali-js/core/connectivity(index'
 
-export { ConnectivityService, type Endpoint} from './ConnectivityService';
+// access functions of the ConnectivityService
+export { ConnectivityService} from './ConnectivityService';
+
+// for use as hook in the UI and rerender at connection status changes
+export { useConnectivity} from './ConnectivityService';
+
+// for configuration of endpoints in the init
+export { type Endpoint} from './ConnectivityService'; 
 
 //### END #################################################

@@ -79,9 +79,20 @@ Sinn des Projektes ist es einen solide Basis für die Entwicklung von mobilen Ap
 
 ============================================================
 
+# Naming of the Parts/Layers
+
+- Core – The basic services described here.
+- Body – The UI and business logic of the implemented app.
+         Sometimes also refered to as src (where it lives) or shell.
+- App  – Body and Core together.
+
+---
+
+============================================================
+
 # Core Services
 
-### LogService
+### Log Service
 
 Logging & Error Management
 
@@ -94,7 +105,7 @@ API: log.trace(), log.debug(), log.info(), log.warning(), log.error(), log.devFa
 There is also a @Log decorator functionality to enhance the logs with the functions.
 Eventually enabling performance measuring.
 
-### DatabseService
+### Databse Service
 
 Local databse to hold tables and data for offline‑first functionality and syncs data to cloud when online.
 
@@ -106,11 +117,18 @@ Multi language capabability through translation files, one for every languange s
 
 API: t(), setLocale()
 
-### StateService
+### Connectivity Service 
+
+Signals status changes in the connection, on-line / off-line. 
+Important for the offline first approach and to know the status of mobile or wifi connections.
+
+API: connectionStatus(), checkEndpoint()
+
+### StateService - todo
 
 Statemanageent of the app with Zustand and Jotai.
 
-### StorageService/SettingsService
+### StorageService/SettingsService - todo
 
 Persistent store of Key-Value pairs for configuration and app states.
 
@@ -125,6 +143,13 @@ API: get, set, remove, subscribe
 ### StateService
 
 Statemanageent of the app with **Zustand** and **Jotai**.
+
+### Connectivity Service 
+
+module: **React Native NetInfo**
+
+Checks the (physical) connection by pinging to provided (default) endpoints.
+Minimum one endpoint has to be set to perform the check.
 
 ### StorageService/SettingsService
 

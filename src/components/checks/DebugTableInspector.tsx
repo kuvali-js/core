@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
+
 import { db } from "@kuvali-js/core";
 import { debugTableToConsole } from "@/components/checks/debugTableToConsole";
 

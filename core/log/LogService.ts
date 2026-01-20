@@ -193,7 +193,7 @@ class LogService {
             message: String(message),
             data: metadata,
           });
-          console.debug("Non-Error logging to bugsink done:", message);
+          // console.debug("Non-Error logging to bugsink done:", message);
         }
 
         // --- log every message in WatermelonDB for offline-first persistence

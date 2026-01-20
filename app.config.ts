@@ -14,7 +14,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   newArchEnabled: true,
   ios: {
     supportsTablet: true,
-    bundleIdentifier: "com.anonymous.kuvali",
+    bundleIdentifier: "com.cebulon.kuvali",
   },
   android: {
     adaptiveIcon: {
@@ -25,7 +25,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
     edgeToEdgeEnabled: true,
     predictiveBackGestureEnabled: false,
-    package: "com.kuvali.kuvali",
+    package: "com.cebulon.kuvali",
   },
   web: {
     output: "static",

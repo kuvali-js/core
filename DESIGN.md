@@ -46,7 +46,7 @@ Interface: CoreStore mit Methoden wie get, set, subscribe, select.
 Implementierungen: CoreStoreZustand, CoreStoreJotai.
 Config: storeEngine: 'zustand' | 'jotai'.
 Exports: Gleiche Hook‑Signaturen (useAuth, useSettings, useConnectivity)—intern wird je nach Engine gemappt.
-
+****
 ### Databse layer
 
 Query für API‑Layer:

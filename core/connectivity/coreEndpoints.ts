@@ -7,12 +7,15 @@ import { type Endpoint } from "@kuvali-js/core";
 *********************************************************/
 export const coreEndpoints = [
   {
-    name: "apple",
-    url: "https://apple.com/",
-    reachable: false,
-    lastChecked: 0,
-    timeout: 36000, // 60 Minuten
-    default: true,  // is checked at every offline→online change
+    // global default endpoint for connectivity check
+    // google-connectivity 8.8.8.8 server
+    name:         "default",
+    description:  "(core heartbeat)",
+    url:          "https://clients3.google.com/generate_204",
+    reachable:    false,
+    lastChecked:  0,
+    timeout:      3600,  // 60 minutes
+    default:      true,  // true: check at every offline→online change
   },
 ] as Endpoint[]
 

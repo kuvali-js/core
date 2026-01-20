@@ -6,6 +6,7 @@
 
 [![npm expo](https://img.shields.io/npm/v/expo.svg?style=flat&color=4630EB&label=expo&labelColor=4630EB&logo=npm)](https://www.npmjs.com/package/expo) [![npm react-native](https://img.shields.io/npm/v/react-native.svg?style=flat&color=61DAFB&label=react-native&labelColor=61DAFB&logo=npm)](https://www.npmjs.com/package/react-native) [![npm supabase](https://img.shields.io/npm/v/@supabase/supabase-js.svg?style=flat&color=3FCF8E&label=supabase&labelColor=3FCF8E&logo=npm)](https://www.npmjs.com/package/@supabase/supabase-js) [![npm watermelon](https://img.shields.io/npm/v/@nozbe/watermelondb.svg?style=flat&color=EE6E73&label=watermelondb&labelColor=EE6E73&logo=npm)](https://www.npmjs.com/package/@nozbe/watermelondb) [![npm loglevel](https://img.shields.io/npm/v/loglevel.svg?style=flat&color=000000&label=loglevel&labelColor=000000&logo=npm)](https://www.npmjs.com/package/loglevel) [![bugsink docker compose](https://img.shields.io/badge/docker--compose-FF0000?style=flat&label=bugsink&labelColor=FF0000&logo=docker)](https://www.bugsink.com/docs/installation/) [![TypeScript](https://img.shields.io/npm/v/typescript.svg?style=flat&color=3178C6&label=TypeScript&labelColor=3178C6&logo=npm)](https://www.npmjs.com/package/typescript)
 
+<!-- jest -->
 ---
 
 ### **The solid foundation for feature-complete, offline-first React Native mobile apps.**

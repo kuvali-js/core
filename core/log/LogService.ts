@@ -25,6 +25,9 @@ import React from "react";
 
 import originalLog from "loglevel";
 
+// --- core utils
+import { isTest } from '../utils/env';
+
 // --- database type & tables
 import KuvaliLog from "../databases/watermelon/models/KuvaliLog";
 import { type Database } from "@nozbe/watermelondb";
@@ -163,7 +166,7 @@ class LogService {
       const rawMethod = originalFactory(methodName, logLevel, loggerName);
 
       // --- create standard meta data record ---
-      return async (message, ...args) => {
+      return (message, ...args) => {
         const context = loggerName ? String(loggerName) : "GLOBAL";
         const levelUpper = methodName.toUpperCase();
 
@@ -197,7 +200,9 @@ class LogService {
         }
 
         // --- log every message in WatermelonDB for offline-first persistence
-        await this.persistToDatabase(levelUpper, message, metadata);
+        this.persistToDatabase(levelUpper, message, metadata).catch(err => {
+          console.error("[LogService] Background DB persist failed:", err);
+        });
 
         // --- Console Output -----------
         rawMethod(`[${context}] ${message}`, ...args);
@@ -257,9 +262,7 @@ class LogService {
   ) {
     if (!this.isDbReady || this.isFlushing) {
       this.logBuffer.push({ level, message, metadata });
-      console.debug(
-        "Logging into buffer until init of database/end of flushing.",
-      );
+      if (!isTest) console.debug("Logging into buffer until init of database/end of flushing.");
       return;
     }
     await this.writeBatchToDb([{ level, message, metadata }]);

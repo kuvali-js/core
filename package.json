@@ -1,22 +1,22 @@
 {
   "name": "@kuvali-js/core",
   "version": "0.1.0-alpha",
+  "license": "MIT",
+  "private": true,
+  "author": "Cebulon <kuvali-js@proton.me>",
+  "homepage": "https://kuvali-js.github.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kuvali-js/core.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kuvali-js/core/issues"
+  },
   "//": "--- IMPORTANT: Using custom index.js as entry point for Polyfills ---",
   "main": "src/index.js",
   "publishConfig": {
     "access": "public"
   },
-  "private": true,
-  "author": "Cebulon <kuvali-js@proton.me>",
-  "license": "GPL-3.0-or-later",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kuvali-js/core.git"
-  },
-  "bugs": {
-    "url": "https://github.com/kuvali-js/core/issues"
-  },
-  "homepage": "https://kuvali-js.github.io",
   "scripts": {
     "start": "npx expo start",
     "//": "--- Ultimate Cleanup & Build Scripts ---",
@@ -32,15 +32,21 @@
   },
   "jest": {
     "preset": "jest-expo",
+    "verbose": false,
+    "roots": [
+      "<rootDir>/src",
+      "<rootDir>/core"
+    ],
     "setupFilesAfterEnv": [
-      "@testing-library/jest-native/extend-expect"
+      "@testing-library/jest-native/extend-expect",
+      "<rootDir>/jest.setup.ts"
     ],
     "moduleNameMapper": {
       "^@kuvali-js/core$": "<rootDir>/core/index.ts",
       "^@/(.*)$": "<rootDir>/src/$1"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|@sentry/.*|native-base|react-native-svg))"
     ]
   },
   "dependencies": {

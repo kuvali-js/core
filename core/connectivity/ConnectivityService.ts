@@ -33,12 +33,12 @@ export interface ConnectionStatus {
   isConnected:            boolean;
   isReachable:            boolean;
   connectionType:         ConnectionType;
-  isConnectionExpensive?: boolean;
-  signalStrength?:        number | null;
-  ssid?:                  string | null;
-  bssid?:                 string | null;
-  cellularGeneration?:    string | null;
-  carrier?:               string | null;
+  isConnectionExpensive?: boolean | null;
+  signalStrength?:        number  | null;
+  ssid?:                  string  | null;
+  bssid?:                 string  | null;
+  cellularGeneration?:    string  | null;
+  carrier?:               string  | null;
 }
 
 // used in event triggers 
@@ -69,7 +69,13 @@ interface ConnectivityEvents {
 export const connectivityAtom = atom<ConnectionStatus>({
   isConnected:            false,
   isReachable:            false,
-  connectionType:         "unknown",
+  connectionType:         "none",
+  isConnectionExpensive:  null, 
+  signalStrength:         null,
+  ssid:                   null,
+  bssid:                  null,
+  cellularGeneration:     null,
+  carrier:                null,
 });
 
 //---------------------------------------
@@ -88,6 +94,9 @@ let endpoints: Endpoint[] = [];
 async function init(appEndpoints: Endpoint[]) {
   
   //------------------------------
+  log.setLevel("TRACE")
+  
+  //------------------------------
   endpoints = [...coreEndpoints, ...appEndpoints]
   
   // check minimum one endpoint is set
@@ -95,11 +104,10 @@ async function init(appEndpoints: Endpoint[]) {
   const hasDefault = endpoints.some(ep => ep.default);
   if (!hasDefault && endpoints.length > 0) {
     log.warn(
-      "[ConnectivityService] Endpoints provided, but none marked as { default: true }. " +
-      "Active reachability checks (Tanzania-Fix) will be skipped."
+      "[INIT-ConnectivityService] Endpoints provided, but none marked as { default: true }. "
     );
   } else if (endpoints.length === 0) {
-    log.info("[ConnectivityService] No endpoints provided. Operating in passive mode (NetInfo only).");
+    log.info("[INIT-ConnectivityService] No endpoints provided. Operating in passive mode (NetInfo only).");
   }
   
   try {
@@ -110,27 +118,28 @@ async function init(appEndpoints: Endpoint[]) {
     
   } catch (error) {
     //------------------------------
-    log.error("[ConnectivityService] Initial fetch failed", error);
+    log.error("[INIT-ConnectivityService] Initial fetch failed", error);
     
     // fetch unsuccessful: set "safe-unknown" status
     store.set(connectivityAtom, {
       isConnected:    false,
       isReachable:    false,
-      connectionType: "unknown",
+      connectionType: "none",
     });
   } // catch
       
   //------------------------------
   // Listen/subscribe for future OS-level changes
   NetInfo.addEventListener((state: NetInfoState) => {
+    log.debug("[ConnectivityService] NetInfo connection value change -> call updateStaus()...")
     updateStatus(state);
   });
   
   //------------------------------
   if (endpoints.length > 0) {
-    log.debug(`[ConnectivityService] endpoints: "${endpoints.map(ep => ep.name).join('", "')}"}`);
+    log.debug(`[INIT-ConnectivityService] endpoints: "${endpoints.map(ep => ep.name).join('", "')}"}`);
   }
-  log.info ("[ConnectivityService] initialized.")
+  log.info ("[INIT-ConnectivityService] initialized.")
 } // init()
 
 
@@ -138,9 +147,14 @@ async function init(appEndpoints: Endpoint[]) {
  * ### Checks NetInfo state and updates atom store
  * Internal logic to process NetInfoState 
  * and perform active pings if necessary
- * - 
+ * 
  *********************************************************/
 async function updateStatus(state: NetInfoState) {
+  
+  log.debug(`[ConnectivityService] updateStatus called...`);
+  if (log.logLevelName() === "TRACE") {
+    log.debug( dumpState((state as any),(state as any)) )   // show connection values for deep debugging
+  }
   
   //------------------------------
   // connectivity status from NetInfo
@@ -157,6 +171,8 @@ async function updateStatus(state: NetInfoState) {
       log.debug(`[ConnectivityService] NetInfo reports connection. Verifying default endpoints...`);
       reachable = await testDefaultEndpoints()
     }
+  } else {
+    log.debug(`[ConnectivityService] No connected: not endpoint check performed.`);
   }
 
   //------------------------------
@@ -166,32 +182,49 @@ async function updateStatus(state: NetInfoState) {
     isReachable:            reachable,
     connectionType:         state.type as ConnectionType, 
     isConnectionExpensive:  state.details?.isConnectionExpensive ?? undefined, 
-    signalStrength:         state.type === "wifi"     ? state.details?.strength           ?? null : null,
-    ssid:                   state.type === "wifi"     ? state.details?.ssid               ?? null : null,
-    bssid:                  state.type === "wifi"     ? state.details?.bssid              ?? null : null,
-    cellularGeneration:     state.type === "cellular" ? state.details?.cellularGeneration ?? null : null,
-    carrier:                state.type === "cellular" ? state.details?.carrier            ?? null : null,
+    //@ts-ignore
+    signalStrength:         state.type === "wifi"     ? state.strength           ?? null : null,
+    //@ts-ignore
+    ssid:                   state.type === "wifi"     ? state.ssid               ?? null : null,
+    //@ts-ignore
+    bssid:                  state.type === "wifi"     ? state.bssid              ?? null : null,
+    //@ts-ignore
+    cellularGeneration:     state.type === "cellular" ? state.cellularGeneration ?? null : null,
+    //@ts-ignore
+    carrier:                state.type === "cellular" ? state.carrier            ?? null : null,
 
   };
 
   const currentstate = store.get(connectivityAtom); 
-  if (isEqual(newState, currentstate)) return;      // Prevent costly or too many updates: only update if something really changed 
-    
+  const equal = isEqual(newState, currentstate)
+  log.debug(`[ConnectivityService] equal? ${equal}`)
+  if (equal) return;      // Prevent costly or too many updates: only update if something really changed 
+  
+  
   //------------------------------
   // connection status changed
   store.set(connectivityAtom, newState);
   emitter.emit("connectionChange", newState);
 
-  const connName = 
+  log.debug(`[ConnectivityService] value(s) changed`)
+
+  //TODO// check debug level (umber) to be less or equal TRACE, 
+  // otherwise exit function without processing the string templates.
+  const connType =
+    newState.connectionType === "none"
+    ? ""
+    : newState.connectionType + " "
+
+    const connName = 
     newState.connectionType === "wifi"     
-    ? `"${newState.ssid ?? ""}" ` 
+    ? ( newState.ssid    !== null ? `"${newState.ssid}" ` : "" ) 
     : newState.connectionType === "cellular" 
-    ? `"${newState.carrier ?? ""}" ` 
+    ? ( newState.carrier !== null ? `"${newState.carrier}" ` : "" ) 
     : ""
 
-  log.info(`[ConnectivityService] ${newState.connectionType} connection ${connName}is ${ newState.isReachable ? "Online" : "Offline"}`);
+  log.info(`[ConnectivityService] ${connType}connection ${connName}is ${ newState.isReachable ? "online" : "offline"}`);
   if (log.logLevelName() === "TRACE") {
-    log.trace( dumpState(newState, currentstate) )   // trace connection values for debugging
+    log.debug( dumpState(newState, currentstate) )   // list connection values for deep debugging
   }
 } // init()
 
@@ -221,12 +254,14 @@ function isEqual(a: ConnectionStatus, b: ConnectionStatus): boolean {
  * Writes the current and new connection state values as a table into the log
  *********************************************************/
 function dumpState(newState: ConnectionStatus, currentState: ConnectionStatus) {
+  const footer = "---------------------------------------------------------\n"
   const header = [
     "[ConnectivityService] Connection states:",
-    "--------------------------",
-    "value                 : current state    -> new state",
-    "--------------------------",
+    "---------------------------------------------------------",
+    "value                 : current state      -> new state",
+    "---------------------------------------------------------",
   ].join("\n");
+  
 
   // unify the keys from both objects
   const keys = Array.from(new Set([...Object.keys(currentState), ...Object.keys(newState)]));
@@ -241,7 +276,7 @@ function dumpState(newState: ConnectionStatus, currentState: ConnectionStatus) {
     return `${key.padEnd(22)}: ${JSON.stringify(curStr).padEnd(18)} -> ${JSON.stringify(newStr).padEnd((18))} ${marker}`;
   });
 
-  return header + "\n" + rows.join("\n");
+  return `${header} \n${rows.join("\n")} \n${footer}`
 }
 
 /**********************************************************
@@ -308,30 +343,33 @@ async function testEndpoint(
   // Check cache first
   const now = Date.now();
   const age = now - endpoint.lastChecked;
-  if (
-    !force && 
-    endpoint.lastChecked > 0 && 
-    age < endpoint.timeout * 1000) {
+  if ( !force 
+    && endpoint.lastChecked > 0 
+    && age < endpoint.timeout * 1000
+  ) {
     log.debug(`[ConnectivityService] Return endpoint ${name} state using cached result (age ${age}ms)`);
     return endpoint.reachable
   }
-
+  
   //-------------------------------------
-  // perform check
+  // perform network check
   let reachable = false
   try {
-    const res = await fetch(endpoint.url, { method: "HEAD" });
+    log.debug(`[ConnectivityService] check endpoint "${endpoint.name}"`);
+    const res = await fetch(endpoint.url, { method: "HEAD" });    // "ping" check if the internet connection is actually working
     reachable = res.ok;
     
   } catch (err) {
-    log.error(`[ConnectivityService] Endpoint ${endpoint.name} error: `, err);
+    log.error(`[ConnectivityService] Endpoint "${endpoint.name}" error: `, err);
   }
   
   endpoint.lastChecked = now;
   endpoint.reachable   = reachable;
 
-  log.debug(`[ConnectivityService] Endpoint ${endpoint.name} reachable: ${reachable}`);
-  log.trace(`[ConnectivityService] Endpoint ${endpoint.name} url: "${endpoint.url}"`);
+  log.debug(`[ConnectivityService] Endpoint "${endpoint.name}" reachable: ${reachable}`);
+  if (log.logLevelName() === "TRACE") {
+  log.debug(`[ConnectivityService] Endpoint "${endpoint.name}" url: "${endpoint.url}"`);
+  }
   
   const epStatus = { name: endpoint.name, reachable: endpoint.reachable }
   emitter.emit("endpointStatusChange", epStatus);
@@ -353,17 +391,24 @@ export const ConnectivityService = {
   init,
   getStatus,
   testEndpoint,
-  onConnectionChange: (cb: (s: ConnectionStatus) => void) => emitter.on("connectionChange", cb),
+  
+  // returns unsubscribe function
+  onConnectionChange: (cb: (s: ConnectionStatus) => void) => {
+    emitter.on("connectionChange", cb);
+    return () => emitter.off("connectionChange", cb);
+  },
+  // to be able to use a reference to unsubscribe
   offConnectionChange: (cb: (s: ConnectionStatus) => void) => emitter.off("connectionChange", cb),
-
+  
+  // returns unsubscribe function
   onEndpointStatusChangeByName: (name: string, cb: (s: EndpointStatus) => void) => {
     const handler = (status: EndpointStatus) => {
       if (status.name === name) cb(status);
     };
     emitter.on("endpointStatusChange", handler);
-    return handler; 
+    return () => emitter.off("endpointStatusChange", handler); 
   },
-
+  // to be able to use a reference to unsubscribe
   offEndpointStatusChangeByName: (handler: (s: EndpointStatus) => void) => {
     emitter.off("endpointStatusChange", handler);
   },

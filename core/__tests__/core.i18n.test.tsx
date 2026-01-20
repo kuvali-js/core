@@ -1,3 +1,5 @@
+// '@'kuvali/core/core.i18n.test.tsx'
+
 import { renderHook } from "@testing-library/react-native";
 import { CoreProvider, useI18n } from "@kuvali-js/core";
 
@@ -126,4 +128,6 @@ describe("Kuvali Core/i18n integration", () => {
 
   //=============================================================================
 });
+
+
 //=== END =====================================================================

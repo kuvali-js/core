@@ -10,6 +10,12 @@
 ![Log](https://img.shields.io/badge/loglevel-lightgrey?style=flat)
 ![Errors](https://img.shields.io/badge/bugsink-red?style=flat)
 
+[![Supabase](https://img.shields.io/npm/v/@supabase/supabase-js.svg?style=flat-square&label=Supabase)](https://www.npmjs.com/package/@supabase/supabase-js)
+[![WatermelonDB](https://img.shields.io/npm/v/@nozbe/watermelondb.svg?style=flat-square&label=WatermelonDB)](https://www.npmjs.com/package/@nozbe/watermelondb)
+[![LogLevel](https://img.shields.io/npm/v/loglevel.svg?style=flat-square&label=LogLevel)](https://www.npmjs.com/package/loglevel)
+[![BugSink](https://img.shields.io/npm/v/bugsink.svg?style=flat-square&label=BugSink)](https://www.npmjs.com/package/bugsink)
+
+
 ### **The solid foundation for feature-complete, offline-first React Native mobile apps.**
 
 ---

@@ -15,6 +15,11 @@
   </a>
 </p>
 
+  <a href="https://www.npmjs.com">
+    <img src="https://img.shields.io" alt="npm version">
+  </a>
+
+
 > **The solid foundation for feature-complete, offline-first React Native mobile apps.**
 
 ---

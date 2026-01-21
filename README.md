@@ -1,8 +1,8 @@
-# @kuvali-js/ui
+# @kuvali-js/core
 
 <p align="left">
-  <a href="https://www.npmjs.com/package/@kuvali-js/ui">
-    <img src="https://img.shields.io/npm/v/@kuvali-js/ui.svg?style=flat-square" alt="npm version">
+  <a href="https://www.npmjs.com/package/@kuvali-js/core">
+    <img src="https://img.shields.io/npm/v/@kuvali-js/core.svg?style=flat-square" alt="npm version">
   </a>
   <a href="https://github.com/kuvali-js/core/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/kuvali-js/ui?style=flat-square" alt="license">

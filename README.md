@@ -15,10 +15,9 @@
   </a>
 </p>
 
-  <a href="https://www.npmjs.com">
-    <img src="https://img.shields.io" alt="npm version">
-  </a>
-
+<p align="left">
+  <img src="https://img.shields.io/badge/Supabase-3FCF8E?logo=supabase&style=flat-square" alt="supabase">
+</p>
 
 > **The solid foundation for feature-complete, offline-first React Native mobile apps.**
 

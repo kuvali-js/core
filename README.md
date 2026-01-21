@@ -5,9 +5,9 @@
 
 ![Supabase](https://img.shields.io/badge/Supabase-3FCF8E) ![Supabase-Auth](https://img.shields.io/badge/Supabase%20Auth-3FCF8E) ![WatermelonDB](https://img.shields.io/badge/WatermelonDB-EE6E73) ![LogLevel](https://img.shields.io/badge/LogLevel-555555) ![BugSink](https://img.shields.io/badge/BugSink-FF0000)
 
-[![Supabase](https://img.shields.io/github/package-json/dependency-version/kuvali-js/core/@supabase/supabase-js?style=flat-square&label=Supabase)]
-[![WatermelonDB](https://img.shields.io/github/package-json/dependency-version/kuvali-js/core/@nozbe/watermelondb?style=flat-square&label=WatermelonDB)]
-[![LogLevel](https://img.shields.io/github/package-json/dependency-version/kuvali-js/core/loglevel?style=flat-square&label=LogLevel)]
+[![Supabase](https://img.shields.io/github/package-json/dependency-version/@kuvali-js/core/@supabase/supabase-js?style=flat-square&label=Supabase)]
+[![WatermelonDB](https://img.shields.io/github/package-json/dependency-version/@kuvali-js/core/@nozbe/watermelondb?style=flat-square&label=WatermelonDB)]
+[![LogLevel](https://img.shields.io/github/package-json/dependency-version/@kuvali-js/core/loglevel?style=flat-square&label=LogLevel)]
 
 
 > **The solid foundation for feature-complete, offline-first React Native mobile apps.**

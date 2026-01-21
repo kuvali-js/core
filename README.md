@@ -5,8 +5,7 @@
   <a href="https://www.npmjs.com/package/@kuvali-js/core">
     <img src="https://img.shields.io/npm/v/@kuvali-js/core.svg?style=flat-square" alt="npm version">
   </a>
-  <img src="https://img.shields.io" alt="npm version">
-  <img src="https://img.shields.io" alt="build status">
+  <img src="https://img.shields.io/github/actions/workflow/status/kuvali-js/core/main.yml" alt="build status">
   <img src="https://img.shields.io" alt="bundle size">
   <a href="./LICENSE">
     <img src="https://img.shields.io" alt="license">

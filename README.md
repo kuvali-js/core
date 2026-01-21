@@ -9,6 +9,10 @@
 [![WatermelonDB](https://img.shields.io/github/package-json/dependency-version/@kuvali-js/core/@nozbe/watermelondb?style=flat-square&label=WatermelonDB)]
 [![LogLevel](https://img.shields.io/github/package-json/dependency-version/@kuvali-js/core/loglevel?style=flat-square&label=LogLevel)]
 
+[![Supabase](https://img.shields.io/github/package-json/dependency-version/kuvali-js/core/main/@supabase/supabase-js?style=flat-square&label=Supabase)]
+[![WatermelonDB](https://img.shields.io/github/package-json/dependency-version/kuvali-js/core/main/@nozbe/watermelondb?style=flat-square&label=WatermelonDB)]
+[![LogLevel](https://img.shields.io/github/package-json/dependency-version/kuvali-js/core/main/loglevel?style=flat-square&label=LogLevel)]
+
 
 > **The solid foundation for feature-complete, offline-first React Native mobile apps.**
 

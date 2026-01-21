@@ -10,7 +10,7 @@
 ![Log](https://img.shields.io/badge/loglevel-lightgrey?style=flat)
 ![Errors](https://img.shields.io/badge/bugsink-red?style=flat)
 
-> **The solid foundation for feature-complete, offline-first React Native mobile apps.**
+### **The solid foundation for feature-complete, offline-first React Native mobile apps.**
 
 ---
 

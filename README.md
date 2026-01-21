@@ -1,18 +1,8 @@
 # @kuvali-js/core
 
-[![Status](https://img.shields.io/badge/status-alpha-orange?style=flat-square)
+[![Status](https://img.shields.io/badge/status-alpha-orange?style=flat-square)] [![npm version](https://img.shields.io/npm/v/@kuvali-js/core.svg)](https://www.npmjs.com/package/@kuvali-js/core) [![npm downloads](https://img.shields.io/npm/dm/@kuvali-js/core.svg)](https://www.npmjs.com/package/@kuvali-js/core) [![Coverage Status](https://img.shields.io/codecov/c/github/kuvali-js/core.svg)](https://codecov.io/gh/kuvali-js/core) [![Dependencies](https://img.shields.io/librariesio/release/npm/@kuvali-js/core)](https://libraries.io/npm/@kuvali-js/core) [![License](https://img.shields.io/github/license/kuvali-js/core.svg)](https://github.com/kuvali-js/core/blob/main/LICENSE) 
 
-[![npm version](https://img.shields.io/npm/v/@kuvali-js/core.svg)](https://www.npmjs.com/package/@kuvali-js/core)
-[![npm downloads](https://img.shields.io/npm/dm/@kuvali-js/core.svg)](https://www.npmjs.com/package/@kuvali-js/core)
-
-[![Coverage Status](https://img.shields.io/codecov/c/github/kuvali-js/core.svg)](https://codecov.io/gh/kuvali-js/core)
-[![Dependencies](https://img.shields.io/librariesio/release/npm/@kuvali-js/core)](https://libraries.io/npm/@kuvali-js/core)
-
-[![License](https://img.shields.io/github/license/kuvali-js/core.svg)](https://github.com/kuvali-js/core/blob/main/LICENSE)
-
-<p align="left">
-  <img src="https://img.shields.io/badge/Supabase-3FCF8E?logo=supabase&style=flat-square" alt="supabase">
-</p>
+[![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?logo=supabase&style=flat-square)][![Supabase Auth](https://img.shields.io/badge/Supabase%20Auth-3FCF8E?logo=supabase&style=flat-square)][![WatermelonDB](https://img.shields.io/badge/WatermelonDB-EE6E73?logo=react&style=flat-square)] [![LogLevel](https://img.shields.io/badge/LogLevel-000000?style=flat-square)]  [![BugSink](https://img.shields.io/badge/BugSink-critical-red?style=flat-square)]
 
 > **The solid foundation for feature-complete, offline-first React Native mobile apps.**
 

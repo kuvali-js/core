@@ -1,6 +1,6 @@
 # @kuvali-js/core
 
-![Status](https://img.shields.io/badge/status-alpha-orange?style=flat-square) [![npm version](https://img.shields.io/npm/v/@kuvali-js/core.svg)](https://www.npmjs.com/package/@kuvali-js/core) [![npm downloads](https://img.shields.io/npm/dm/@kuvali-js/core.svg)](https://www.npmjs.com/package/@kuvali-js/core) [![Dependencies](https://img.shields.io/librariesio/release/npm/@kuvali-js/core)](https://libraries.io/npm/@kuvali-js/core) [![License](https://img.shields.io/github/license/kuvali-js/core.svg)(https://github.com/kuvali-js/core/blob/main/LICENSE)]
+![Status](https://img.shields.io/badge/status-alpha-orange?style=flat-square) [![npm version](https://img.shields.io/npm/v/@kuvali-js/core.svg)](https://www.npmjs.com/package/@kuvali-js/core) [![npm downloads](https://img.shields.io/npm/dm/@kuvali-js/core.svg)](https://www.npmjs.com/package/@kuvali-js/core) [![Dependencies](https://img.shields.io/librariesio/release/npm/@kuvali-js/core)](https://libraries.io/npm/@kuvali-js/core) [![License](https://img.shields.io/github/license/kuvali-js/core.svg)(https://github.com/kuvali-js/core/LICENSE)]
 
 ![Supabase](https://img.shields.io/badge/Supabase-3FCF8E) ![Supabase-Auth](https://img.shields.io/badge/Supabase%20Auth-3FCF8E) ![WatermelonDB](https://img.shields.io/badge/WatermelonDB-EE6E73) ![LogLevel](https://img.shields.io/badge/LogLevel-555555) ![BugSink](https://img.shields.io/badge/BugSink-FF0000)
 

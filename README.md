@@ -1,12 +1,13 @@
 # @kuvali-js/core
 
-![Status](https://img.shields.io/badge/status-alpha-orange?style=flat-square) [![npm version](https://img.shields.io/npm/v/@kuvali-js/core.svg)](https://www.npmjs.com/package/@kuvali-js/core) ![Build](https://img.shields.io/badge/build-passing-brightgreen) [![Dependencies](https://img.shields.io/librariesio/release/npm/@kuvali-js/core)](https://libraries.io/npm/@kuvali-js/core) ![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+![Status](https://img.shields.io/badge/status-alpha-orange?style=flat) [![npm version](https://img.shields.io/npm/v/@kuvali-js/core.svg?style=flat)](https://www.npmjs.com/package/@kuvali-js/core) ![Build](https://img.shields.io/badge/build-passing-brightgreen?style=flat) [![Dependencies](https://img.shields.io/librariesio/release/npm/@kuvali-js/core)](https://libraries.io/npm/@kuvali-js/core) ![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat)
 [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/kuvali-js/core/main/LICENSE)
 
-![Database](https://img.shields.io/badge/offline--first-watermelondb-blue)
-![Supabase](https://img.shields.io/badge/backend-supabase-blueviolet)
-![Log](https://img.shields.io/badge/logging-loglevel-lightgrey)
-![Errors](https://img.shields.io/badge/error%20handling-bugsink-red)
+![Expo](https://img.shields.io/badge/framework-expo-blue?style=flat)
+![Database](https://img.shields.io/badge/offline--first-watermelondb-blue?style=flat)
+![Supabase](https://img.shields.io/badge/backend-supabase-blueviolet?style=flat)
+![Log](https://img.shields.io/badge/logging-loglevel-lightgrey?style=flat)
+![Errors](https://img.shields.io/badge/error%20handling-bugsink-red?style=flat)
 
 
 [![Supabase](https://img.shields.io/github/package-json/dependency-version/kuvali-js/core/main/@supabase/supabase-js?style=flat-square&label=Supabase)]

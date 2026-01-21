@@ -1,7 +1,7 @@
 # @kuvali-js/core
 
 ![Status](https://img.shields.io/badge/status-alpha-orange?style=flat-square) [![npm version](https://img.shields.io/npm/v/@kuvali-js/core.svg)](https://www.npmjs.com/package/@kuvali-js/core) ![Build](https://img.shields.io/badge/build-passing-brightgreen) [![Dependencies](https://img.shields.io/librariesio/release/npm/@kuvali-js/core)](https://libraries.io/npm/@kuvali-js/core) ![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)
-[![License](https://img.shields.io/badge/license-MIT-green)]([https://github.com/kuvali-js/core/main/LICENSE](https://github.com/kuvali-js/core/blob/main/LICENSE)]
+[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/kuvali-js/core/main/LICENSE)
 
 ![Database](https://img.shields.io/badge/offline--first-watermelondb-blue)
 ![Supabase](https://img.shields.io/badge/backend-supabase-blueviolet)

@@ -15,6 +15,30 @@
 [![LogLevel](https://img.shields.io/npm/v/loglevel.svg?style=flat-square&label=LogLevel)](https://www.npmjs.com/package/loglevel)
 [![BugSink](https://img.shields.io/npm/v/bugsink.svg?style=flat-square&label=BugSink)](https://www.npmjs.com/package/bugsink)
 
+<!-- Supabase -->
+[![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square)](https://github.com/supabase/supabase)
+[![npm](https://img.shields.io/npm/v/@supabase/supabase-js.svg?style=flat-square&label=version)](https://www.npmjs.com/package/@supabase/supabase-js)
+
+<!-- WatermelonDB -->
+[![WatermelonDB](https://img.shields.io/badge/WatermelonDB-EE6E73?style=flat-square)](https://github.com/Nozbe/WatermelonDB)
+[![npm](https://img.shields.io/npm/v/@nozbe/watermelondb.svg?style=flat-square&label=version)](https://www.npmjs.com/package/@nozbe/watermelondb)
+
+<!-- LogLevel -->
+[![LogLevel](https://img.shields.io/badge/LogLevel-555555?style=flat-square)](https://github.com/pimterry/loglevel)
+[![npm](https://img.shields.io/npm/v/loglevel.svg?style=flat-square&label=version)](https://www.npmjs.com/package/loglevel)
+
+<!-- BugSink -->
+[![BugSink](https://img.shields.io/badge/BugSink-FF0000?style=flat-square)](https://github.com/bugsink/bugsink) 
+[![npm](https://img.shields.io/npm/v/bugsink.svg?style=flat-square&label=version)](https://www.npmjs.com/package/bugsink)
+
+<!-- Expo -->
+[![Expo](https://img.shields.io/badge/Expo-000020?style=flat-square)](https://github.com/expo/expo)
+[![npm](https://img.shields.io/npm/v/expo.svg?style=flat-square&label=version)](https://www.npmjs.com/package/expo)
+
+<!-- React Native -->
+[![React Native](https://img.shields.io/badge/React%20Native-61DAFB?style=flat-square)](https://github.com/facebook/react-native)
+[![npm](https://img.shields.io/npm/v/react-native.svg?style=flat-square&label=version)](https://www.npmjs.com/package/react-native)
+
 
 ### **The solid foundation for feature-complete, offline-first React Native mobile apps.**
 

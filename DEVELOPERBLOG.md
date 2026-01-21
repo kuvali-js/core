@@ -4,8 +4,13 @@ ConnectivityService: write jest tests
 > The app and core are working
 
 <sup><sub>end header</sup></sub>
+ 
+---
+<sup><sub> git push - 22.01.2026 04:24 </sub></sup>
+---
 
-<sup><sub> 21.01.2026 13:00...16:30...break...16:45... </sub></sup>
+<sup><sub> git push - 22.01.2026 04:21 </sub></sup>
+<sup><sub> ...21.01.2026 16:30...break...16:45...22.01.2026 03:00 - 16:15 hours </sub></sup>
 
 ## ConnectivityService 
 
@@ -22,15 +27,11 @@ Mostly writing the mocks and events were the problem today. :-(
   
 Was a successful day. still worked on ConnectivityService and not on Supaebase/Auth/Log.
 
-<sup><sub>...21.01.2026 01:35 - 12:30 hours </sub></sup>
 
 ---
-<sup><sub>git push - 21.01.2026 00:35</sub></sup>
-<sup><sub>20.01.26 09:27...00:35 - 15:40 hours </sub></sup>
-
-## ConnectivityService 
-
 <sup><sub> 21.01.26 12:15... </sub></sup>
+
+## ConnectivityService
 
 **💩 Aufgeschoben: 4 hours**
 
@@ -45,3 +46,9 @@ When I wanted to show the version numbers of the used packages, it did not show 
 > A big issue in the last hours was that the @kuvali-js/core repository was private.
 > Changed it to public and it worked.
  
+---
+
+<sup><sub>git push - 21.01.2026 00:35</sub></sup>
+<sup><sub>20.01.26 09:27...00:35 - 15:40 hours </sub></sup>
+
+## ConnectivityService

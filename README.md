@@ -1,15 +1,17 @@
 # @kuvali-js/core
 
+[![npm version](https://img.shields.io/npm/v/@kuvali-js/core.svg)](https://www.npmjs.com/package/@kuvali-js/core)
+
 <p align="left">
   <img src="https://img.shields.io/badge/status-alpha-orange?style=flat-square" alt="status alpha">
   <a href="https://www.npmjs.com/package/@kuvali-js/core">
     <img src="https://img.shields.io/npm/v/@kuvali-js/core.svg?style=flat-square" alt="npm version">
   </a>
-  <img src="https://img.shields.io/github/actions/workflow/status/kuvali-js/core/main.yml" alt="build status">
+  
+  <!--img src="https://img.shields.io/github/actions/workflow/status/kuvali-js/core/main.yml" alt="build status"-->
+  
   <img src="https://img.shields.io" alt="bundle size">
-  <a href="./LICENSE">
-    <img src="https://img.shields.io" alt="license">
-  </a>
+
   <a href="https://github.com/kuvali-js/core/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/kuvali-js/ui?style=flat-square" alt="license">
   </a>

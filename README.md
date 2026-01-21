@@ -1,21 +1,14 @@
 # @kuvali-js/core
 
+[![Status](https://img.shields.io/badge/status-alpha-orange?style=flat-square)
+
 [![npm version](https://img.shields.io/npm/v/@kuvali-js/core.svg)](https://www.npmjs.com/package/@kuvali-js/core)
+[![npm downloads](https://img.shields.io/npm/dm/@kuvali-js/core.svg)](https://www.npmjs.com/package/@kuvali-js/core)
 
-<p align="left">
-  <img src="https://img.shields.io/badge/status-alpha-orange?style=flat-square" alt="status alpha">
-  <a href="https://www.npmjs.com/package/@kuvali-js/core">
-    <img src="https://img.shields.io/npm/v/@kuvali-js/core.svg?style=flat-square" alt="npm version">
-  </a>
-  
-  <!--img src="https://img.shields.io/github/actions/workflow/status/kuvali-js/core/main.yml" alt="build status"-->
-  
-  <img src="https://img.shields.io" alt="bundle size">
+[![Coverage Status](https://img.shields.io/codecov/c/github/kuvali-js/core.svg)](https://codecov.io/gh/kuvali-js/core)
+[![Dependencies](https://img.shields.io/librariesio/release/npm/@kuvali-js/core)](https://libraries.io/npm/@kuvali-js/core)
 
-  <a href="https://github.com/kuvali-js/core/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/kuvali-js/ui?style=flat-square" alt="license">
-  </a>
-</p>
+[![License](https://img.shields.io/github/license/kuvali-js/core.svg)](https://github.com/kuvali-js/core/blob/main/LICENSE)
 
 <p align="left">
   <img src="https://img.shields.io/badge/Supabase-3FCF8E?logo=supabase&style=flat-square" alt="supabase">

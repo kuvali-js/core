@@ -1,5 +1,7 @@
 # @kuvali-js/core
 
+--- 
+
 ![Status](https://img.shields.io/badge/status-alpha-orange?style=flat) [![npm version](https://img.shields.io/npm/v/@kuvali-js/core.svg?style=flat)](https://www.npmjs.com/package/@kuvali-js/core) ![Build](https://img.shields.io/badge/build-passing-brightgreen?style=flat) [![Dependencies](https://img.shields.io/librariesio/release/npm/@kuvali-js/core)](https://libraries.io/npm/@kuvali-js/core) [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/kuvali-js/core/main/LICENSE)
 
 ---
@@ -10,7 +12,6 @@
 <!-- NPM package versions-->
 [![npm expo](https://img.shields.io/npm/v/expo.svg?style=flat&label=expo)](https://www.npmjs.com/package/expo) [![npm react-native](https://img.shields.io/npm/v/react-native.svg?style=flat&label=react-native)](https://www.npmjs.com/package/react-native) [![npm supabase](https://img.shields.io/npm/v/@supabase/supabase-js.svg?style=flat&label=supabase)](https://www.npmjs.com/package/@supabase/supabase-js) [![npm watermelon](https://img.shields.io/npm/v/@nozbe/watermelondb.svg?style=flat&label=watermelondb)](https://www.npmjs.com/package/@nozbe/watermelondb) [![npm loglevel](https://img.shields.io/npm/v/loglevel.svg?style=flat&label=loglevel)](https://www.npmjs.com/package/loglevel) [![bugsink docker compose](https://img.shields.io/badge/docker--compose-0db7ed?style=flat&logo=docker&label=bugsink)](https://www.bugsink.com/docs/installation/)
 
-)](https://www.bugsink.com/docs/docker-compose-install/)
 
 ### **The solid foundation for feature-complete, offline-first React Native mobile apps.**
 

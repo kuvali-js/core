@@ -6,16 +6,9 @@
 ![Expo](https://img.shields.io/badge/framework-expo-blue?style=flat)
 ![Database](https://img.shields.io/badge/offline--first-watermelondb-blue?style=flat)
 ![Supabase](https://img.shields.io/badge/backend-supabase-blueviolet?style=flat)
+![Supabase--Auth](https://img.shields.io/badge/user-supabase--auth-blueviolet?style=flat)
 ![Log](https://img.shields.io/badge/logging-loglevel-lightgrey?style=flat)
 ![Errors](https://img.shields.io/badge/error%20handling-bugsink-red?style=flat)
-
-
-[![Supabase](https://img.shields.io/github/package-json/dependency-version/kuvali-js/core/main/@supabase/supabase-js?style=flat-square&label=Supabase)]
-[![WatermelonDB](https://img.shields.io/github/package-json/dependency-version/kuvali-js/core/main/@nozbe/watermelondb?style=flat-square&label=WatermelonDB)] [![LogLevel](https://img.shields.io/github/package-json/dependency-version/kuvali-js/core/main/loglevel?style=flat-square&label=LogLevel)]
-
-[![Supabase](https://img.shields.io/github/package-json/dependency-version/kuvali-js/core/main/@supabase/supabase-js?style=flat-square&label=Supabase)]
-[![WatermelonDB](https://img.shields.io/github/package-json/dependency-version/kuvali-js/core/main/@nozbe/watermelondb?style=flat-square&label=WatermelonDB)] [![LogLevel](https://img.shields.io/github/package-json/dependency-version/kuvali-js/core/main/loglevel?style=flat-square&label=LogLevel)]
-
 
 > **The solid foundation for feature-complete, offline-first React Native mobile apps.**
 

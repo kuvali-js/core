@@ -3,75 +3,25 @@ SupabaseService: implement & jest tests
 > [!NOTE] working
 > The app and core are working
 
-
-## SupabaseService 
-- [ ] start implementing SupabaseService
-- [ ] start implementing IdentityService
-- [ ] start implementing AuthService
-- [ ] start implementing LoginService
-
----
 <sup><sub>end header</sup></sub>
 
----
-
-## 1-SupabaseService 
-
-<sup><sub> 16:15... </sub></sup>
-
-## SupabaseService 
-
-- [ ] start implementing SupabaseService
-- [ ] start implementing IdentityService
-- [ ] start implementing AuthService
-- [ ] start implementing LoginService
- 
----
-<sup><sub> git push - 22.01.2026 16:27 </sub></sup><br/>
----
-
-<sup><sub> git push - 22.01.2026 16:21 </sub></sup><br/>
 ## SupabaseService 
 
 - [ ] Focus: create SupabaseService und jest tests
 
-<sup><sub> 16:15... </sub></sup>
-
-## SupabaseService 
-
+### Tasks
 - [ ] start implementing SupabaseService
 - [ ] start implementing IdentityService
 - [ ] start implementing AuthService
 - [ ] start implementing LoginService
-
-<!-- RANT-START --
-Fuck! I wsted the whole day for making clear, what the priciples should be for the dvelopment of Kuvali. Just because, I wanted to create "just iwithin a view minutes" a prompt to tell AI how to implement the future services and core features. Right now the IdentityService and AuthServices. Shit.
-
-Interestingly, at each prompt, AI asked me to implement these services ;-) And I copied the code in the files already. Not all is lost. 
-
-> This it not how to fast implement an MVP!
-> 
-<!-- RANT-END -->
  
-<sup><sub> ...16:00...16:20...break... </sub></sup>
-
-# Option to ignore files for push
 
 
-Added patterns to .gitignore "\_*", "\#*", "\~*" to ignore files in git push operations.
-Now I can have files that are ignored by the tracking and left out of the public github repository. 
-Also to deveop a feature and have different files until I decide which one will be the final one.
+--- 
 
-<sup><sub> ...15:00...16:00... </sub></sup>
+<sup><sub> 22.01.2026 10:30...12:30...15:00... </sub></sup>
 
-### Change README 
-
-- [x] Change README.md 
-  with comprehensive explanation of the Kuvali procejt, based on Kuvali Principles document.
-
-<sup><sub> 22.01.2026 10:30...12:30...15:00 </sub></sup>
-
-### Service Implementation Principles definition
+### Service Implementation Principles Definition
 
 Basic discussion how to implement this:
 - class vs object
@@ -82,9 +32,50 @@ Did waste another 2.5 hours - no: 5! hours - in creating a document with the [Ku
 
 Ok, got IdentityServices and AuthServices on the way. Only the examples from AI (Gemini, Copilot).
 
+<!-- RANT
 **Rant:** I am here since 5 hours? What did I do? 
+-->
 
----
+<sup><sub> ...15:00...16:00... </sub></sup>
+
+### Change README 
+
+- [x] Change README.md 
+  with comprehensive explanation of the Kuvali procejt, based on Kuvali Principles document.
+
+<sup><sub> ...16:00...16:20... </sub></sup>
+
+### Option to ignore files for push
+
+Added patterns to .gitignore "\_*", "\#*", "\~*" to ignore files in git push operations.
+Now I can have files that are ignored by the tracking and left out of the public github repository. 
+Also to deveop a feature and have different files until I decide which one will be the final one.
+
+<sup><sub> gitpush - 22.01.2026 16:21 </sub></sup><br/>
+
+<!-- RANT-START --
+> Fuck! I wsted the whole day for making clear, what the priciples should be for the dvelopment of Kuvali. Just because, I wanted to create "just iwithin a view minutes" a prompt to tell AI how to implement the future services and core features. Right now the IdentityService and AuthServices. Shit.
+> 
+> Interestingly, at each prompt, AI asked me to implement these services ;-) And I copied the code in the files already. Not all is lost. 
+> 
+> This it not how to fast implement an MVP!
+> 
+<!-- RANT-END -->
+ 
+<sup><sub> gitpush - 22.01.2026 19:12 </sub></sup><br/>
+<sup><sub> ...16:00...19:20... </sub></sup>
+
+### JJ clean up & recovery of files
+
+<!-- RANT-START --
+> More hours wasted. What do I do. Wh is time flying so fast?
+---- RANT_END --->
+
+<sup><sub> ...19:20 dinner break </sub></sup>
+
+
+
+-------------------------------------------------------------
 <sup><sub> git push - 22.01.2026 04:30 </sub></sup><br/>
 <sup><sub> 22.01.2026 03:00...04:30 </sub></sup>
 

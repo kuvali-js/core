@@ -1,6 +1,8 @@
 // @kuvali-js/core/databases/watermelon/DatabaseService.ts
 import { appSchema, Database } from "@nozbe/watermelondb";
 import SQLiteAdapter from "@nozbe/watermelondb/adapters/sqlite";
+
+//--- core
 import { log, Log } from "../../log/index";
 
 /**********************************************************

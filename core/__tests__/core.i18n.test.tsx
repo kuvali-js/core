@@ -69,6 +69,7 @@ describe("Kuvali Core/i18n integration", () => {
         await AsyncStorage.clear(); // Clear storage before each test to ensure isolation
       });
 
+      //===========================================================================
       it("should persist the locale choice when setLocale is called", async () => {
         const config = { i18n: { defaultLocale: "en" } };
         const wrapper = ({ children }: { children: React.ReactNode }) => (
@@ -89,6 +90,7 @@ describe("Kuvali Core/i18n integration", () => {
         expect(savedLocale).toBe("sw");
       });
 
+      //===========================================================================
       it("should load the persisted locale on initialization", async () => {
         // 1. Arrange: Pre-set a locale in storage
         await AsyncStorage.setItem("kuvali-locale", "sw");

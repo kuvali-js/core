@@ -2,6 +2,12 @@
 
 # Kuvali - The React-Native Core Framework
 
+---
+
+### **The solid foundation for feature-complete, offline-first React Native mobile apps.**
+
+---
+
 This is an internal file with remarks about a lot of things.
 It could help others to understand the framework and get fast up to date.
 
@@ -82,7 +88,7 @@ Sinn des Projektes ist es einen solide Basis für die Entwicklung von mobilen Ap
 # Naming of the Parts/Layers
 
 - Core – The basic services described here.
-- Body – The UI and business logic of the implemented app.
+- App  – The UI and business logic of the implemented app.
          Sometimes also refered to as src (where it lives) or shell.
 - App  – Body and Core together.
 
@@ -138,11 +144,32 @@ API: get, set, remove, subscribe
 
 ============================================================
 
+# Dependencies
+
+```
+LogService
+├── LogLevel ─> DatabaseService   # storing the log messages
+└─m Sentry ──── BugSink           # error management
+
+i18nService
+└─> LogService
+
+DatabaseService
+├─> LogService
+└─m Watermelon
+
+```
+---
+
+============================================================
+
 # Implementation Details & Used Packages
 
 ### StateService
 
-Statemanageent of the app with **Zustand** and **Jotai**.
+module: **Jotai**
+
+Statemanageent of the app.
 
 ### Connectivity Service 
 

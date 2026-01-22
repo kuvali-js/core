@@ -1,4 +1,4 @@
-ConnectivityService: write jest tests
+SupabaseService: implement & jest tests
 
 > [!NOTE] working
 > The app and core are working
@@ -12,6 +12,19 @@ ConnectivityService: write jest tests
 
 ---
 <sup><sub>end header</sup></sub>
+
+---
+
+## 1-SupabaseService 
+
+<sup><sub> 16:15... </sub></sup>
+
+## SupabaseService 
+
+- [ ] start implementing SupabaseService
+- [ ] start implementing IdentityService
+- [ ] start implementing AuthService
+- [ ] start implementing LoginService
  
 ---
 <sup><sub> git push - 22.01.2026 16:27 </sub></sup><br/>

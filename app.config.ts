@@ -7,8 +7,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   name: "Kuvali",
   slug: "kuvali",
   version: packageJson.version, // Syncing from package.json
+  platforms: ["android", "ios"], // , "web"
   orientation: "portrait",
-  icon: "./src/assets/images/icon.png",
   scheme: "kuvali",
   userInterfaceStyle: "automatic",
   newArchEnabled: true,
@@ -16,12 +16,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     supportsTablet: true,
     bundleIdentifier: "com.cebulon.kuvali",
   },
+  icon: "./src/assets/images/MirrorMirrorOval-WhiteBg.png",
   android: {
     adaptiveIcon: {
       backgroundColor: "#E6F4FE",
-      foregroundImage: "./src/assets/images/android-icon-foreground.png",
-      backgroundImage: "./src/assets/images/android-icon-background.png",
-      monochromeImage: "./src/assets/images/android-icon-monochrome.png",
+      foregroundImage: "./src/assets/images/MirrorMirrorOval.png",
     },
     edgeToEdgeEnabled: true,
     predictiveBackGestureEnabled: false,
@@ -29,13 +28,18 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   web: {
     output: "static",
-    favicon: "./src/assets/images/favicon.png",
+    favicon: "./src/assets/images/MirrorMirrorOval-WhiteBg.png",
   },
   plugins: [
-    "expo-router",
     "expo-dev-client",
     "expo-secure-store",
     [
+      "expo-router",
+      {
+        root: "./src/app" // Expo-router root
+      }
+    ],
+    [ 
       "expo-build-properties",
       {
         ios: {
@@ -53,13 +57,23 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         },
       },
     ],
-    [
+    [ 
       "@sentry/react-native/expo",
       {
-        organization: "kuvaliLLC",
-        project: "kuvaliApp",
+        organization: "Cebulon",
+        project: "KuvaliApp",
         uploadSourceMaps: false,
       },
+    ],
+    [
+      "react-native-bootsplash",
+      {
+        "assetsDir": "./src/assets/bootsplash",   // !!! important !!! otherwise bootsplash does not find the /src/bootsplash folder
+        "logo": "./src/assets/images/MirrorMirrorOval.png",
+        "logoWidth": 200,
+        "backgroundColor": "#FFFFFF",
+        "darkBackgroundColor": "#1A1A1A"
+      }
     ],
   ],
   experiments: {

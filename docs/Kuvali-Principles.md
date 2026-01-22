@@ -40,23 +40,32 @@ Kuvali setzt konsequent auf moderne Architekturmuster, um Komplexität zu reduzi
 * **`@kuvali-js/ui`**: Standardisierte UI-Komponenten des Cores (Login-Screens, Onboarding-Flows).
 
 ### Zentrale Komponenten
-* **Zentrale Initialisierung:** Ein einziger Aufruf von `initCore()` in der `App.tsx` startet die gesamte Boot-Sequenz in der korrekten Reihenfolge.
-* **Observability:** Einheitliches Logging (`Log.*level*()`) und Error-Management über eine zentrale **BugSink**.
-* **IdentityService:** Ein Singleton-Service, der alle Informationen über den User, den Authentifizierungsstatus und Berechtigungen kapselt.
+* **Zentrale Initialisierung:** Ein einziger Aufruf von `initCore()` in der `App.tsx` startet die gesamte Boot-Sequenz .
+* **Observability:** Einheitliches Logging (`Log.*level*()`) und Error-Management mittels **BugSink**.
+* **IdentityService:** Ein Service, der alle Informationen über den User, den Authentifizierungsstatus und Berechtigungen kapselt.
 * **ABAC-Security:** Action-Based Access Control ermöglicht feingranulare Berechtigungen auf Aktionsebene statt starrer Rollen.
 * **Modern Auth:** Fokus auf passwortlose Logins (OTP via SMS/WhatsApp), bereitgestellt durch Supabase.
 
 ---
 
 ## 5. Leitlinie: "Don't Reinvent the Wheel"
-Wir erfinden Basisfunktionen nicht neu. Wir wählen die besten Pakete des Ökosystems aus, kümmern uns um deren nahtlose Integration und Initialisierung. Der Fokus liegt darauf, diese Komponenten für zukünftige Anwendungen so einfach und zentral wie möglich konfigurierbar zu machen.
+Wir erfinden Basisfunktionen nicht neu. Wir wählen die besten Pakete des Ökosystems aus, kümmern uns um deren nahtlose Integration und Initialisierung. Der Fokus liegt darauf, diese Komponenten für zukünftige Anwendungen so einfach und zentral wie möglich konfigurierbar zu machen. Standard, statt proprietärer Lösungen
 
 ---
 
-## 6. Ausblick & Mitmachen
-Kuvali soll wachsen. Die Vision ist ein hochgradig konfigurierbares System, bei dem Entwickler bei der Installation zwischen verschiedenen Optionen (z. B. Datenbanken, Logging-Providern) wählen können. Features sollen über einfache **Toggles** im Core aktiviert oder deaktiviert werden können.
+## Ausblick, Roadmap & Community
 
-Kuvali lebt von der Community. Die Principles sind ein stabiler Ausgangspunkt – wir laden jeden ein, neue Features beizusteuern, alternative Pakete zu prüfen und Schnittstellen zu verbessern.
+Kuvali soll wachsen. Kuvali ist kein abgeschlossenes Produkt, sondern ein lebender Vorschlag.
+
+Die Vision ist ein hochgradig konfigurierbares System, bei dem Entwickler bei der Installation zwischen verschiedenen Optionen (z. B. Datenbanken, Logging-Providern) wählen können. Features sollen über einfache **Toggles** im Core aktiviert oder deaktiviert werden können. 
+
+Nach der Installation von Kuvali wird der Entwickler eine lauffähige, professionelle Expo Anwendung haben, die out-of-the-box läuft. 
+
+- Community-Driven: Wir laden Entwickler ein, den Core zu erweitern, alternative Pakete zu prüfen und Schnittstellen zu verbessern.
+- Konfigurierbarkeit: In Zukunft wird Kuvali über ein CLI-Tool bei der Installation konfigurierbar sein (Wahl der DB, Logging-Provider etc.).
+- Feature-Toggles: Einzelne Funktionen sollen sich über einfache Toggles im Core aktivieren oder deaktivieren lassen.
+
+Kuvali lebt von der Community. Die Principles sind ein stabiler Ausgangspunkt – wir laden jeden ein, neue Features beizusteuern und das Projekt voranzutreiben..
 
 **Contribute. Extend. Improve.**
 

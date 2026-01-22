@@ -9,10 +9,17 @@
     "baseUrl": ".",
     "paths": {
       "@kuvali-js/core": ["./core/index.ts"],
-      "@services/*": ["./src/services/*"],
-      "@config/*": ["./src/config/*"],
-      "@/*": ["./src/*"],
-      "#/*": ["./*"]
+      "@services/*":     ["./src/services/*"],
+      "@components/*":   ["./src/components/*"],
+      "@constants/*":    ["./src/constants/*"],
+      "@ui/*":           ["./src/components/ui/*"],
+      "@layouts/*":      ["./src/components/layouts/*"],
+      "@theme/*":        ["./src/theme/*"],
+      "@hooks/*":        ["./src/hooks/*"],
+      "@config/*":       ["./src/config/*"],
+      "app/*":           ["./src/app/*"],
+      "@/*":             ["./src/*"],
+      "#/*":             ["./*"]
     }
   },
   "include": [
@@ -20,6 +27,8 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
+    "app/**/*.ts",
+    "app/**/*.tsx",
     "src/**/*.ts",
     "src/**/*.tsx",
     "core/**/*.ts",

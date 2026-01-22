@@ -1,4 +1,4 @@
-// src/initApp.ts
+// 'app'/initApp.ts'
 
 /**********************************************************
  * ### App specific part of the initiatlisation

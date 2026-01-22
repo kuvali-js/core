@@ -94,7 +94,7 @@ let endpoints: Endpoint[] = [];
 async function init(appEndpoints: Endpoint[]) {
   
   //------------------------------
-  log.setLevel("TRACE")
+  // log.setLevel("TRACE")
   
   //------------------------------
   endpoints = [...coreEndpoints, ...appEndpoints]

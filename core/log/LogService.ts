@@ -240,7 +240,7 @@ class LogService {
         );
         await this.watermelon!.batch(...models);
       });
-      console.debug("[Kuvali:LogService] Logging to local database done.");
+      // console.trace("[Kuvali:LogService] Logging to local database done.");
     } catch (err) {
       // use console.error as fallback
       console.error("[Kuvali:LogService] Batch write failed:", err);

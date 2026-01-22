@@ -12,8 +12,10 @@
   "bugs": {
     "url": "https://github.com/kuvali-js/core/issues"
   },
+  "//": "---",
   "//": "--- IMPORTANT: Using custom index.js as entry point for Polyfills ---",
   "main": "src/index.js",
+  "//": "---",
   "publishConfig": {
     "access": "public"
   },
@@ -34,6 +36,7 @@
     "preset": "jest-expo",
     "verbose": false,
     "roots": [
+      "<rootDir>/app",
       "<rootDir>/src",
       "<rootDir>/core"
     ],
@@ -43,6 +46,8 @@
     ],
     "moduleNameMapper": {
       "^@kuvali-js/core$": "<rootDir>/core/index.ts",
+      "^@/app/(.*)$": "<rootDir>/app/$1",
+      "^@/src/(.*)$": "<rootDir>/src/$1",
       "^@/(.*)$": "<rootDir>/src/$1"
     },
     "transformIgnorePatterns": [

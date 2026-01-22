@@ -8,7 +8,7 @@ import { type Endpoint } from "@kuvali-js/core";
 export const coreEndpoints = [
   {
     // global default endpoint for connectivity check
-    // google-connectivity 8.8.8.8 server
+    // google 8.8.8.8 server
     name:         "core-heartbeat",
     description:  "(core heartbeat)",
     url:          "https://clients3.google.com/generate_204",

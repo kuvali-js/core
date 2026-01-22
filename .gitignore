@@ -3,6 +3,7 @@
 # dependencies
 node_modules/
 tmp/
+ignore/
 
 # Expo
 .expo/
@@ -58,11 +59,11 @@ app-example
 *.bak
 
 # files marked to be ignored:
-\#*
-~*
-_*
+==*
+=*
 
-
+# my developer blog to document the journey.
+DEVELOPERBLOG.md
 
 # dev specific
 *-WEG

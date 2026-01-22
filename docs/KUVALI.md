@@ -36,46 +36,70 @@ Sinn des Projektes ist es einen solide Basis für die Entwicklung von mobilen Ap
 
 ```
 .
-├── src/
-│   ├── app/                # Expo Router screens and routing logic
-│   │   ├── (tabs)/         # Main navigation tab group
-│   │   ├── .../            # Additional screens, etc.
-│   │   └── _layout.tsx     # Root layout and app entry point (Expo Router)
-│   ├── assets/             # Static assets (images, fonts, splash screen)
-│   ├── components/         # Reusable UI components
-│   ├── config/             # App-specific configs and core-framework extensions
-│   ├── constants/          # App constants, themes, and static configurations
-│   │   └── translations/   # translation files used by the i18n core service
-│   ├── context/            # React context providers for state sharing
-│   ├── databases/          #
-│   │   ├── supabase/       # additional configurations (used at init core)
-│   │   └── watermelon/     # additional configurations (used at init core)
-│   ├── hooks/              # Custom React hooks
-│   ├── services/           # App-specific business logic and API clients
-│   ├── store/              # Global state management (Joati, Zustand)
-│   ├── App.tsx             # Core framework initialization & bootstrap bridge
-│   ├── index.js            # Low-level entry point (registers main component)
-│   └── initApp.ts          # App-level initialization (orchestrated by core)
-│                           
-├── core/                   # Kuvali framework (shared engine & base services)
-│   ├── connectivity/       
-│   ├── databases/          
-│   │   ├── supabase/       # init & core configurations
-│   │   └── watermelon/     # init & core configurations
-│   ├── i18n/               
-│   ├── identity/           
-│   │   ├── permission/     # user premissions
-│   │   └── auth/           # user login process
-│   └── log/                
-│                           
-├── __tests__/              # Test suites (unit, integration, e2e)
-├── .env/                   # definition of environment variables
-├── lib/                    # Third-party wrappers or local vendor packages
-├── scripts/                # Automation, deployment, and maintenance scripts
-├── supabase/               # supabase cli configuration
-├── app.config.ts           # Application settings
-├── package.json            # Project dependencies and scripts
-└── tsconfig.json           # TypeScript configuration and path aliases
+├── app/                        # Expo Router screens and routing logic
+│   ├── (tabs)/                 # Main navigation tab group
+│   │   ├── _layout.tsx         # Root/Tab layout for all screens
+│   │   ├── index.tsx           # Home Screen (/)
+│   │   ├── profile.tsx         # Profile Screen (/profile)
+│   │   ├── settings.tsx        # Settings Screen (/settings)
+│   │   └── .../                # Additional screens, etc.
+│   ├── (auth)/                 # Auth Stack (grouped)
+│   │   ├── login.tsx
+│   │   └── register.tsx│   
+│   └── [id].tsx                # Dynamic Route (/123)
+│   └── +not-found.tsx         # 404 Screen
+│                                
+├── src/                        
+│   ├── assets/                 # Static assets (images, fonts, splash screen)
+│   │   ├── bootsplash/         # bootsplash splashscreen images 
+│   │   │                       #   for ios and android build process
+│   │   └── images/             # Feature-spezifisch
+│   ├── components/             # Reusable UI components
+│   │   ├── ui/                 # Atomare UI-Komponenten
+│   │   │   ├── Button.tsx      
+│   │   │   ├── Card.tsx        
+│   │   │   └── Input.tsx       
+│   │   ├── layouts/            # Screen-Container
+│   │   │   ├── ScreenContainer.tsx                 
+│   │   │   └── TabBarLayout.tsx                    
+│   │   └── features/           # Feature-spezifisch
+│   ├── config/                 # App-specific configs and core-framework extensions
+│   ├── constants/              # App constants, themes, and static configurations
+│   │   └── translations/       # translation files used by the i18n core service
+│   ├── context/                # React context providers for state sharing
+│   ├── databases/              #
+│   │   ├── supabase/           # additional configurations (used at init core)
+│   │   └── watermelon/         # additional configurations (used at init core)
+│   ├── hooks/                  # Custom React hooks
+│   ├── services/               # App-specific business logic and API clients
+│   ├── store/                  # Global state management (Joati, Zustand)
+│   ├── theme/                  
+│   │   ├── tokens.ts           # Design Tokens
+│   │   └── tailwind.ts         # Tailwind Presets
+│   ├── App.tsx                 # Core framework initialization & bootstrap bridge
+│   ├── index.js                # Low-level entry point (registers main component)
+│   └── initApp.ts              # App-level initialization (orchestrated by core)
+│                               
+├── core/                       # Kuvali framework (shared engine & base services)
+│   ├── connectivity/           
+│   ├── databases/              
+│   │   ├── supabase/           # init & core configurations
+│   │   └── watermelon/         # init & core configurations
+│   ├── i18n/                   
+│   ├── identity/               
+│   │   ├── permission/         # user premissions
+│   │   └── auth/               # user login process
+│   └── log/                    
+│                               
+├── __tests__/                  # Test suites (unit, integration, e2e)
+├── .env/                       # definition of environment variables
+├── lib/                        # Third-party wrappers or local vendor packages
+├── scripts/                    # Automation, deployment, and maintenance scripts
+├── supabase/                   # supabase cli configuration
+├── app.config.ts               # Application settings
+├── package.json                # Project dependencies and scripts
+├── tailwind.config.js          
+└── tsconfig.json               # TypeScript configuration and path aliases
 ```
 
 ---
@@ -217,18 +241,25 @@ Extended implementation of webdev.simplyfied.
 
 ### SplashScreen
 
-[LogRecket Create a SplashScreen descrition]($https://blog.logrocket.com/building-splash-screens-react-native/)
-
 module: **react-native-bootsplash**
 
 Using bootsplash for the SplashScreen.
 Removed the native Expo SplashScreen.
 
-The screens are stored in the assests/bootsplash folder.
+Set the image to use in app.json (app.config.ts)
 
-THe bootsplash can create all necessary resoultions
+Bootsplash creates all necessary resoultions
 and files for ios and android.
-Command: `npx react-native generate-bootsplash logo.png`
+
+```
+npx react-native-bootsplash generate \
+  --platforms=android,ios \
+  --background=ffffff \
+  --logo-width=192 \
+  --assets-output=./src/assets/bootsplash \
+  ./src/assets/images/MirrorMirrorLogo.png 
+```
+
 Resolution 2732 x 2732 px
 Main area 1200 x 1200 px
 100 DPI
@@ -236,9 +267,10 @@ Main area 1200 x 1200 px
 ### App Icon
 
 Using Expo’s built-in image processing.
+Resolution 1024x1024 px
+
 Just put the file in assets/icon.png and
 Expo is caring for it.
 Command: `npx expo prebuild` (`npx expo prebuild --clean`)
-Resolution 1024x1024 px
 
 //### END #################################################

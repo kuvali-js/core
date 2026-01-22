@@ -37,34 +37,45 @@ Sinn des Projektes ist es einen solide Basis für die Entwicklung von mobilen Ap
 ```
 .
 ├── src/
-│   ├── app/             # Expo Router screens and routing logic
-│   │   ├── (tabs)/      # Main navigation tab group
-│   │   └── _layout.tsx  # Root layout and app entry point (Expo Router)
-│   ├── assets/              # Static assets (images, fonts, splash screen)
-│   ├── components/      # Reusable UI components
-│   ├── config/          # App-specific configs and core-framework extensions
-│   ├── constants/       # App constants, themes, and static configurations
-│   │   └── translations # translation files used by the i18n core service
-│   ├── context/         # React context providers for state sharing
-│   ├── databases/       #
-│   │   ├── supabase     # additional configurations (used at init core)
-│   │   └── watermelon   # additional configurations (used at init core)
-│   ├── hooks/           # Custom React hooks
-│   ├── services/        # App-specific business logic and API clients
-│   ├── store/           # Global state management (Joati, Zustand)
-│   ├── App.tsx              # Core framework initialization & bootstrap bridge
-│   ├── index.js             # Low-level entry point (registers main component)
-│   └── initApp.ts       # App-level initialization (orchestrated by core)
-│
-├── .env/                # definition of environment variables
-├── core/                # Kuvali framework (shared engine & base services)
-├── lib/                 # Third-party wrappers or local vendor packages
-├── scripts/             # Automation, deployment, and maintenance scripts
-├── supabase/            # supabase cli configuration
-├── tests/               # Test suites (unit, integration, e2e)
-├── app.config.ts        # Application settings
-├── package.json         # Project dependencies and scripts
-└── tsconfig.json        # TypeScript configuration and path aliases
+│   ├── app/                # Expo Router screens and routing logic
+│   │   ├── (tabs)/         # Main navigation tab group
+│   │   ├── .../            # Additional screens, etc.
+│   │   └── _layout.tsx     # Root layout and app entry point (Expo Router)
+│   ├── assets/             # Static assets (images, fonts, splash screen)
+│   ├── components/         # Reusable UI components
+│   ├── config/             # App-specific configs and core-framework extensions
+│   ├── constants/          # App constants, themes, and static configurations
+│   │   └── translations/   # translation files used by the i18n core service
+│   ├── context/            # React context providers for state sharing
+│   ├── databases/          #
+│   │   ├── supabase/       # additional configurations (used at init core)
+│   │   └── watermelon/     # additional configurations (used at init core)
+│   ├── hooks/              # Custom React hooks
+│   ├── services/           # App-specific business logic and API clients
+│   ├── store/              # Global state management (Joati, Zustand)
+│   ├── App.tsx             # Core framework initialization & bootstrap bridge
+│   ├── index.js            # Low-level entry point (registers main component)
+│   └── initApp.ts          # App-level initialization (orchestrated by core)
+│                           
+├── core/                   # Kuvali framework (shared engine & base services)
+│   ├── connectivity/       
+│   ├── databases/          
+│   │   ├── supabase/       # init & core configurations
+│   │   └── watermelon/     # init & core configurations
+│   ├── i18n/               
+│   ├── identity/           
+│   │   ├── permission/     # user premissions
+│   │   └── auth/           # user login process
+│   └── log/                
+│                           
+├── __tests__/              # Test suites (unit, integration, e2e)
+├── .env/                   # definition of environment variables
+├── lib/                    # Third-party wrappers or local vendor packages
+├── scripts/                # Automation, deployment, and maintenance scripts
+├── supabase/               # supabase cli configuration
+├── app.config.ts           # Application settings
+├── package.json            # Project dependencies and scripts
+└── tsconfig.json           # TypeScript configuration and path aliases
 ```
 
 ---

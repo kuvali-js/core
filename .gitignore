@@ -59,8 +59,10 @@ app-example
 
 # files marked to be ignored:
 \#*
-\~*
-\_*
+~*
+_*
+
+DEVELOPERBLOG.md
 
 # dev specific
 *-WEG

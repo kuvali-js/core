@@ -34,7 +34,7 @@ Kuvali isn't just a library; it's a technical manifesto for building resilient m
 * **Pragmatic Monolith:** Integrated services (Auth, DB, Network) that work together seamlessly instead of brittle, loose abstractions.
 * **Zero-Config Start:** We handle the complex initialization of Best-of-Breed packages so you don't have to.
 
-👉 **[Read our full Core Principles (Architecture & Philosophy)](./Kuvali-Principles.md)**
+👉 **[Read our full Core Principles (Architecture & Philosophy)](./doc/Kuvali-Principles.md)**
 ## ✨ Core Features (Roadmap)
 
 Kuvali provides a pre-configured suite of services. Everything is initialized via a single `initCore()` call.
